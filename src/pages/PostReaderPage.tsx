@@ -34,7 +34,7 @@ const PostReaderPage = () => {
         const roomType = exec(STUDIO_ROOM_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
         const roomSize = exec(ROOM_SIZE_REGEX, post)[1];
         const tel = exec(TEL_REGEX, post)[0];
-        const lineID = exec(LINE_ID_REGEX, post)[1].trim();
+        const lineID = exec(LINE_ID_REGEX, post)[2].trim();
 
         const info = [
             'name: ' + name,

@@ -34,6 +34,8 @@ const CondoList: string[] = [
   "Aspire Asoke-Ratchada",
   "Hasu Haus (Soi Onnut 1/1)",
   "The Line sukhumvit 101",
+  "Edge 23 by sansiri",
+  "Supalai oriental sukhumvit 39",
 ];
 
 export default CondoList;
