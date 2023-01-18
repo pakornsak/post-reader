@@ -28,6 +28,9 @@ const CondoList: string[] = [
   "AREEYA DAILY KASET-NAWAMINTR",
   "Cozy Satreewittaya 2 Soi 10",
   "Via Botani (Sukhumvit 47)",
+  "H2 Condo รามอินทรา 21",
+  "คอนโด วัน สุขุมวิท 52",
+  "The Base Park East Sukhumvit 77",
 ];
 
 export default CondoList;

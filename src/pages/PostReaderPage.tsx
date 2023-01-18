@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { Box, Button, TextField } from '@mui/material';
 import ExamplePost from '../constants/ExamplePost';
 import CondoList from '../constants/CondoList';
-import { PRICE_REGEX, BED_ROOM_REGEX, TEL_REGEX, ROOM_SIZE_REGEX } from '../constants/PostReaderRegex';
+import { PRICE_REGEX, BED_ROOM_REGEX, TEL_REGEX, ROOM_SIZE_REGEX, FLOOR_REGEX, LINE_ID_REGEX } from '../constants/PostReaderRegex';
 
 const boxStyle = {
     display: 'flex',
@@ -12,6 +12,11 @@ const boxStyle = {
     bgcolor: 'background.paper',
     borderRadius: 1,
 };
+
+const exec = (regex: RegExp, input: string) => {
+    const match = regex.exec(input)
+    return match || ["", ""];
+}
 
 const PostReaderPage = () => {
     const [post, setPost] = useState(ExamplePost);
@@ -23,17 +28,21 @@ const PostReaderPage = () => {
 
     const handleCompute = () => {
         const name = CondoList.find((condoName) => post.includes(condoName)) || "";
-        const price = PRICE_REGEX.exec(post)![1];
-        const bedRooms = BED_ROOM_REGEX.exec(post)![1];
-        const roomSize = ROOM_SIZE_REGEX.exec(post)![1];
-        const tel = TEL_REGEX.exec(post)![0];
+        const price = exec(PRICE_REGEX, post)[1];
+        const floor = exec(FLOOR_REGEX, post)[2];
+        const bedRooms = exec(BED_ROOM_REGEX, post)[1];
+        const roomSize = exec(ROOM_SIZE_REGEX, post)[1];
+        const tel = exec(TEL_REGEX, post)[0];
+        const lineID = exec(LINE_ID_REGEX, post)[1];
 
         const info = [
             'name: ' + name,
             'price: ' + price,
-            'roomType: ' + `${bedRooms} BR`,
+            'floor: ' + floor,
+            `roomType: ${bedRooms} BR`,
             'roomSize: ' + roomSize,
             'tel: ' + tel,
+            'Line: ' + lineID,
         ].join('\n');
 
         setResult(info);
