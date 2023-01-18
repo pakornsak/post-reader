@@ -31,6 +31,9 @@ const CondoList: string[] = [
   "H2 Condo รามอินทรา 21",
   "คอนโด วัน สุขุมวิท 52",
   "The Base Park East Sukhumvit 77",
+  "Aspire Asoke-Ratchada",
+  "Hasu Haus (Soi Onnut 1/1)",
+  "The Line sukhumvit 101",
 ];
 
 export default CondoList;
