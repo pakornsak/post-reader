@@ -2,7 +2,17 @@ import React, { ChangeEvent, useState } from 'react';
 import { Box, Button, TextField } from '@mui/material';
 import ExamplePost from '../constants/ExamplePost';
 import CondoList from '../constants/CondoList';
-import { PRICE_REGEX, BED_ROOM_REGEX, TEL_REGEX, ROOM_SIZE_REGEX, FLOOR_REGEX, LINE_ID_REGEX, FLOOR_ENG_REGEX, STUDIO_ROOM_REGEX } from '../constants/PostReaderRegex';
+import {
+    PRICE_REGEX,
+    PRICE2_REGEX,
+    BED_ROOM_REGEX,
+    TEL_REGEX,
+    ROOM_SIZE_REGEX,
+    FLOOR_REGEX,
+    LINE_ID_REGEX,
+    FLOOR_ENG_REGEX,
+    STUDIO_ROOM_REGEX
+} from '../constants/PostReaderRegex';
 
 const boxStyle = {
     display: 'flex',
@@ -15,7 +25,7 @@ const boxStyle = {
 
 const exec = (regex: RegExp, input: string) => {
     const match = regex.exec(input)
-    return match || ["", ""];
+    return match || ["", "", "", ""];
 }
 
 const PostReaderPage = () => {
@@ -27,14 +37,15 @@ const PostReaderPage = () => {
     };
 
     const handleCompute = () => {
-        const name = CondoList.find((condoName) => post.toLowerCase().includes(condoName.toLowerCase())) || "";
+        const input = post.replaceAll('  ', ' ').replaceAll(' : ', ' ');
+        const name = CondoList.find((condoName) => input.toLowerCase().includes(condoName.toLowerCase())) || "";
 
-        const price = exec(PRICE_REGEX, post)[1];
-        const floor = exec(FLOOR_REGEX, post)[2] || exec(FLOOR_ENG_REGEX, post)[1];
-        const roomType = exec(STUDIO_ROOM_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
-        const roomSize = exec(ROOM_SIZE_REGEX, post)[1];
-        const tel = exec(TEL_REGEX, post)[0];
-        const lineID = exec(LINE_ID_REGEX, post)[2].trim();
+        const price = exec(PRICE_REGEX, input)[1] || exec(PRICE2_REGEX, input)[1];
+        const floor = exec(FLOOR_REGEX, input)[3] || exec(FLOOR_ENG_REGEX, input)[1];
+        const roomType = exec(STUDIO_ROOM_REGEX, input)[1] || exec(BED_ROOM_REGEX, input)[1] + " BR";
+        const roomSize = exec(ROOM_SIZE_REGEX, input)[1];
+        const tel = exec(TEL_REGEX, input)[0];
+        const lineID = exec(LINE_ID_REGEX, input)[2].trim();
 
         const info = [
             'name: ' + name,
