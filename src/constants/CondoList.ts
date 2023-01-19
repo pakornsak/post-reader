@@ -248,6 +248,7 @@ const CondoList: string[] = [
   "The seed Mingle - Suanplu (Sathorn)",
   "The Seed Mingle Sathorn",
   "THE PARKLAND รัชดา-ท่าพระ",
+  "THE ISSARA LADPRAO",
 ];
 
 export default CondoList;

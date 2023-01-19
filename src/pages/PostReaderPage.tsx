@@ -13,7 +13,8 @@ import {
     LINE_ID_REGEX,
     FLOOR_ENG_REGEX,
     ROOM_TYPE_REGEX,
-    OWNER_REGEX
+    OWNER_REGEX,
+    OWNER2_REGEX
 } from '../constants/PostReaderRegex';
 
 const boxStyle = {
@@ -51,7 +52,7 @@ const PostReaderPage = () => {
         const floor = exec(FLOOR_REGEX, input)[3] || exec(FLOOR_ENG_REGEX, input)[1];
         const roomType = exec(ROOM_TYPE_REGEX, input)[1] || exec(BED_ROOM_REGEX, input)[1] + " BR";
         const roomSize = exec(ROOM_SIZE_REGEX, input)[1] || exec(ROOM_SIZE2_REGEX, input)[1];
-        const owner = exec(OWNER_REGEX, input)[3].trim();
+        const owner = exec(OWNER2_REGEX, input)[1] || exec(OWNER_REGEX, input)[2].trim();
         const tel = exec(TEL_REGEX, input)[0];
         const lineID = exec(LINE_ID_REGEX, input)[3].trim();
 
