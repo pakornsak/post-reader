@@ -91,7 +91,7 @@ const PostReaderPage = () => {
 
         // Electric
         const fridge = FRIDGE_REGEX.test(post);
-        const tv = TV_REGEX.test(post);
+        const tv = TV_REGEX.test(post.replace('CCTV', ''));
         const microwave = MICROWAVE_REGEX.test(post);
         const waterHeater = WATER_HEATER_REGEX.test(post);
         const washingMachine = WASHING_MACHINE_REGEX.test(post);

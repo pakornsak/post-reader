@@ -17,7 +17,7 @@ export const FLOOR_REGEX = /(Floor|ชั้น|ชั้นที่)( |: )?(\d
 export const FLOOR_ENG_REGEX = /(\d*)(st|nd|rd|th)? (floor|Fl\.)/i;
 
 export const ROOM_TYPE_REGEX =
-  /(Studio|Duplex|โฮมออฟฟิศ|ห้องสตู|บ้านเดี่ยว|ทาวน์โฮม|One bed room plus|house)/i;
+  /(Studio|Duplex|โฮมออฟฟิศ|ห้องสตู|บ้านเดี่ยว|ทาวน์โฮม|ทาวเฮ้าส์|One bed room plus|house)/i;
 
 export const BED_ROOM_REGEX = /(\d|One)( )?(bedrooms|bed|ห้องนอน|นอน)/i;
 export const BATH_ROOM_REGEX = /(\d) bathrooms/i;
@@ -54,7 +54,7 @@ export const LINE_ID_REGEX = /(ไลน์|Line ID|Line)(.*:\s*|\.| )([^\s]+)(\
 export const FRIDGE_REGEX = /(ตู้เย็น|Refrigerator)/i;
 export const TV_REGEX = /(TV \+ remote|Smart TV|TV|ทีวี|ทีวีดิจิตอล|โทรทัศน์)/i;
 export const MICROWAVE_REGEX = /((เตา)?ไมโครเวฟ)/i;
-export const WATER_HEATER_REGEX = /(เครื่องทำน้ำอุ่น)/i;
+export const WATER_HEATER_REGEX = /(เครื่องทำน้ำอุ่น|เครื่องน้ำอุ่น)/i;
 export const WASHING_MACHINE_REGEX = /(เครื่องซักผ้า)/i;
 //   /(เตาไฟฟ้า/induction)/i
 //   /digital door lock/i

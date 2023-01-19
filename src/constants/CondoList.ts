@@ -325,6 +325,10 @@ const CondoList: string[] = [
   "Ideo จุฬา-สามย่าน",
   "Lumpini Center นวมินทร์ 43",
   "Urbana Sathon",
+  "Chapter เจริญนคร Riverside",
+  "เดอะคอนเนคพัฒนาการ 44",
+  "THE BASE สะพานใหม่",
+  "ไอดีโอ โมบิ จรัญอินเตอร์เชนจ์",
 ];
 
 export default CondoList;
