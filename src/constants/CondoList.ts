@@ -51,7 +51,6 @@ const CondoList: string[] = [
   "Hasu Haus (Soi Onnut 1/1)",
   "Hasu Haus",
   "Hive Sathorn",
-  "I Place",
   "IBIZA Condo rca ",
   "IDEO Mobi Sathorn",
   "IDEO RAMA 9 Asoke",
@@ -290,6 +289,18 @@ const CondoList: string[] = [
   "พาร์ควิว วิภาวดี",
   "พาร์คออริจินทองหล่อ",
   "The niche ID Phetkasem-Bangkae",
+  "@lifeพหลโยธิน18",
+  "Lumpini Place Taopoon Interchange",
+  "เซนทริคซีน รัชวิภา",
+  "ลุมพินีเพลส นราธิวาส เจ้าพระยา",
+  "the niche id ลาดพร้าววังหิน",
+  "ดิไอริส บางใหญ่",
+  "Casa Condo @ MRT สามแยกบางใหญ่",
+  "พญาไทเพลส",
+  "Casa Asoke Dindeang Condo",
+  "HIVE สุขุมวิท 65",
+  "U Delight 3 ประชาชื่น 26",
+  "The Trust Erawan",
 ];
 
 export default CondoList;

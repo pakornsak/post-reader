@@ -61,7 +61,8 @@ const PostReaderPage = () => {
             .replaceAll(' : ', ': ')
             .replace('พระรามเก้า', 'Rama9')
             .replace('ชั่น', 'ชั้น')//typo
-            .replace('สขุมวิท', 'สุขุมวิท')
+            .replace('สขุมวิท', 'สุขุมวิท')//typo
+            .replace('Asoak', 'Asoke')//typo
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ');
 
         setPost(post);
