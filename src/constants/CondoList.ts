@@ -268,6 +268,8 @@ const CondoList: string[] = [
   "ฟิวส์ เซนเซ่ บางแค",
   "Noble RE:D",
   "Kave Town Space",
+  "Grand Park Town",
+  "Icondo Green Space",
 ];
 
 export default CondoList;
