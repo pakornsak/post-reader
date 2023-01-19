@@ -8,10 +8,12 @@ import {
     BED_ROOM_REGEX,
     TEL_REGEX,
     ROOM_SIZE_REGEX,
+    ROOM_SIZE2_REGEX,
     FLOOR_REGEX,
     LINE_ID_REGEX,
     FLOOR_ENG_REGEX,
-    STUDIO_ROOM_REGEX
+    ROOM_TYPE_REGEX,
+    OWNER_REGEX
 } from '../constants/PostReaderRegex';
 
 const boxStyle = {
@@ -37,15 +39,21 @@ const PostReaderPage = () => {
     };
 
     const handleCompute = () => {
-        const input = post.replaceAll('  ', ' ').replaceAll(' : ', ' ');
+        const input = post
+            .replace(/\s\s+/g, ' ')
+            .replaceAll(' : ', ': ')
+            .replace('พระรามเก้า', 'Rama9')
+            .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ')
+            ;
         const name = CondoList.find((condoName) => input.toLowerCase().includes(condoName.toLowerCase())) || "";
 
-        const price = exec(PRICE_REGEX, input)[1] || exec(PRICE2_REGEX, input)[1];
+        const price = exec(PRICE_REGEX, input.replaceAll('/', ''))[1] || exec(PRICE2_REGEX, input)[3];
         const floor = exec(FLOOR_REGEX, input)[3] || exec(FLOOR_ENG_REGEX, input)[1];
-        const roomType = exec(STUDIO_ROOM_REGEX, input)[1] || exec(BED_ROOM_REGEX, input)[1] + " BR";
-        const roomSize = exec(ROOM_SIZE_REGEX, input)[1];
+        const roomType = exec(ROOM_TYPE_REGEX, input)[1] || exec(BED_ROOM_REGEX, input)[1] + " BR";
+        const roomSize = exec(ROOM_SIZE_REGEX, input)[1] || exec(ROOM_SIZE2_REGEX, input)[1];
+        const owner = exec(OWNER_REGEX, input)[3].trim();
         const tel = exec(TEL_REGEX, input)[0];
-        const lineID = exec(LINE_ID_REGEX, input)[2].trim();
+        const lineID = exec(LINE_ID_REGEX, input)[3].trim();
 
         const info = [
             'name: ' + name,
@@ -53,6 +61,7 @@ const PostReaderPage = () => {
             'floor: ' + floor,
             `roomType: ${roomType}`,
             'roomSize: ' + roomSize,
+            'owner: ' + owner,
             'tel: ' + tel,
             'Line: ' + lineID,
         ].join('\n');
