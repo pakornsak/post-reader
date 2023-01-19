@@ -19,6 +19,9 @@ import {
     MICROWAVE_REGEX,
     WASHING_MACHINE_REGEX,
     WATER_HEATER_REGEX,
+    SELL_PRICE_REGEX,
+    SELL_PRICE2_REGEX,
+    SELL_PRICE1_REGEX,
 } from '../constants/PostReaderRegex';
 import { exec } from '../helpers/RegExHelper';
 
@@ -35,6 +38,7 @@ const boxStyle = {
 interface RoomInfo {
     name: string;
     price: string;
+    sellPrice: string;
     floor: string;
     roomType: string;
     roomSize: string;
@@ -60,9 +64,12 @@ const PostReaderPage = () => {
             .replace(/\s\s+/g, ' ')
             .replaceAll(' : ', ': ')
             .replace('พระรามเก้า', 'Rama9')
-            .replace('ชั่น', 'ชั้น')//typo
+            .replaceAll('ชั่น', 'ชั้น')//typo
+            .replace('สเตชั้น', 'สเตชั่น')
             .replace('สขุมวิท', 'สุขุมวิท')//typo
             .replace('Asoak', 'Asoke')//typo
+            .replace('vาย', 'ขาย')//typo
+            .replace('เอ สเปซ', 'A Space')
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ');
 
         setPost(post);
@@ -73,6 +80,7 @@ const PostReaderPage = () => {
             post.toLowerCase().replaceAll(' ', '').includes(condoName.toLowerCase().replaceAll(' ', ''))) || "";
 
         // Info
+        const sellPrice = exec(SELL_PRICE_REGEX, post)[1] || exec(SELL_PRICE1_REGEX, post)[1] || exec(SELL_PRICE2_REGEX, post)[1];
         const price = exec(PRICE2_REGEX, post)[3] || exec(PRICE_REGEX, post.replaceAll('/', ''))[1];
         const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
@@ -91,6 +99,7 @@ const PostReaderPage = () => {
         setResult({
             name: name,
             price: price,
+            sellPrice: sellPrice,
             floor: floor,
             roomType: roomType,
             roomSize: roomSize,
@@ -127,13 +136,13 @@ const PostReaderPage = () => {
                             <TableCell>{result.name}</TableCell>
                             <TableCell colSpan={2}>
                                 <CopyToClipboard text={copyText}>
-                                    <Button variant="contained" color="success">Copy</Button>
+                                    <Button variant="contained" color="success" size="small">Copy</Button>
                                 </CopyToClipboard>
                             </TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell>Rent price</TableCell>
-                            <TableCell>{result.price}</TableCell>
+                            <TableCell>{result.price ? 'Rent price' : 'Sell Price'}</TableCell>
+                            <TableCell>{result.price || result.sellPrice}</TableCell>
                             <TableCell>Floor</TableCell>
                             <TableCell>{result.floor}</TableCell>
                         </TableRow>
