@@ -21,6 +21,25 @@ export const TEL_REGEX =
 
 export const LINE_ID_REGEX = /(ไลน์|Line ID|Line)(.*:\s*|\.| )(.*)(\s)?/i;
 
-// Furniture
+// Funitures
+// - เตียงและที่นอนสปริง(ในภายแค่ยังไม่ได้นำมาวางค่ะมีฟูกให้)
+// - ตู้เสื้อผ้า
+// แอร์ 2 ตัว
+// เตียง
+// โซฟา
+// แอร์
+// ชั้นวางทีวี
+// ตู้เสื้อผ้า
+// ล็อคเกอร์
+// โต๊ะเครื่องแป้ง
+// ผ้าม่านกันรังสี
+
+// Electric equipments
 export const FRIDGE_REGEX = /(ตู้เย็น|Refrigerator)/i;
-export const TV_REGEX = /(TV \+ remote)/i;
+export const TV_REGEX = /(TV \+ remote|Smart TV|TV|ทีวี|ทีวีดิจิตอล)/i;
+export const MICROWAVE_REGEX = /((เตา)?ไมโครเวฟ)/i;
+export const WATER_HEATER_REGEX = /(เครื่องทำน้ำอุ่น)/i;
+export const WASHING_MACHINE_REGEX = /(เครื่องซักผ้า)/i;
+// เตาไฟฟ้า
+//digital door lock
+//Digital Door Lock

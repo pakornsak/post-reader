@@ -273,6 +273,23 @@ const CondoList: string[] = [
   "Life @ Phahon 18",
   "Regent Orchid สุขุมวิท 101",
   "regent home 22",
+  "The Privacy Condo (รัชดา-สุทธิสาร)",
+  "The President สาทร-ราชพฤกษ์ เฟส 3",
+  "Esta bliss มีนบุรี",
+  "The Excel Hideaway สุขุมวิท 71",
+  "Nue Center Bangna",
+  "อารีย์ เพลส พหลโยธิน",
+  "Life Ladprao Valley",
+  "The Key สาธร-เจริญราษฎ์",
+  "Centric Tiwanon Station",
+  "Quintara Phume สุขุมวิท 39",
+  "Condo One Ladprao 18",
+  "IVY River",
+  "The Pano",
+  "เดอะ คิทท์ พลัส สุขุมวิท 113",
+  "พาร์ควิว วิภาวดี",
+  "พาร์คออริจินทองหล่อ",
+  "The niche ID Phetkasem-Bangkae",
 ];
 
 export default CondoList;

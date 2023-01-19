@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
+import { Box, Button, Chip, Paper, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ExamplePost from '../constants/ExamplePost';
 import CondoList from '../constants/CondoList';
@@ -16,7 +16,11 @@ import {
     ROOM_TYPE_REGEX,
     FRIDGE_REGEX,
     TV_REGEX,
+    MICROWAVE_REGEX,
+    WASHING_MACHINE_REGEX,
+    WATER_HEATER_REGEX,
 } from '../constants/PostReaderRegex';
+import { exec } from '../helpers/RegExHelper';
 
 const boxStyle = {
     display: 'flex',
@@ -40,12 +44,10 @@ interface RoomInfo {
     furniture: {
         fridge: boolean;
         tv: boolean;
+        microwave: boolean;
+        waterHeater: boolean;
+        washingMachine: boolean;
     }
-}
-
-const exec = (regex: RegExp, post: string) => {
-    const match = regex.exec(post)
-    return match || ["", "", "", ""];
 }
 
 const PostReaderPage = () => {
@@ -58,15 +60,12 @@ const PostReaderPage = () => {
             .replace(/\s\s+/g, ' ')
             .replaceAll(' : ', ': ')
             .replace('พระรามเก้า', 'Rama9')
-            .replace('ชั่น', 'ชั้น')
-            .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ')
+            .replace('ชั่น', 'ชั้น')//typo
+            .replace('สขุมวิท', 'สุขุมวิท')
+            .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ');
 
         setPost(post);
     };
-
-    const handleCopy = () => {
-        //
-    }
 
     const handleCompute = () => {
         const name = CondoList.find((condoName) =>
@@ -81,9 +80,12 @@ const PostReaderPage = () => {
         const tel = exec(TEL_REGEX, post)[0];
         const lineID = exec(LINE_ID_REGEX, post)[3].trim();
 
-        // Furniture
+        // Electric
         const fridge = FRIDGE_REGEX.test(post);
         const tv = TV_REGEX.test(post);
+        const microwave = MICROWAVE_REGEX.test(post);
+        const waterHeater = WATER_HEATER_REGEX.test(post);
+        const washingMachine = WASHING_MACHINE_REGEX.test(post);
 
         setResult({
             name: name,
@@ -96,7 +98,10 @@ const PostReaderPage = () => {
             lineID: lineID,
             furniture: {
                 fridge: fridge,
-                tv: tv
+                tv: tv,
+                microwave: microwave,
+                waterHeater: waterHeater,
+                washingMachine: washingMachine,
             }
         });
         setCopyText(name);
@@ -144,10 +149,13 @@ const PostReaderPage = () => {
                             <TableCell>{result.lineID}</TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell>Funiture</TableCell>
+                            <TableCell>Electical</TableCell>
                             <TableCell colSpan={3}>
-                                {result.furniture?.fridge ? '✅ Fridge' : ''}
-                                {result.furniture?.tv ? '✅ TV' : ''}
+                                {result.furniture?.fridge ? <Chip label="✅ Fridge" /> : <Chip label="❌ Fridge" />}
+                                {result.furniture?.tv ? <Chip label="✅ TV" /> : <Chip label="❌ TV" />}
+                                {result.furniture?.microwave && <Chip label="✅ Microwave" />}
+                                {result.furniture?.waterHeater && <Chip label="✅ Water Heater" />}
+                                {result.furniture?.washingMachine ? <Chip label="✅ Washing Machine" /> : <Chip label="❌ Washing Machine" />}
                             </TableCell>
                         </TableRow>
                     </TableBody>
