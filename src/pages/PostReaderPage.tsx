@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material';
+import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ExamplePost from '../constants/ExamplePost';
 import CondoList from '../constants/CondoList';
 import {
@@ -23,6 +24,7 @@ const boxStyle = {
     m: 1,
     bgcolor: 'background.paper',
     borderRadius: 1,
+    backGround: '#E7EBF0'
 };
 
 interface RoomInfo {
@@ -47,6 +49,7 @@ const exec = (regex: RegExp, post: string) => {
 const PostReaderPage = () => {
     const [post, setPost] = useState(ExamplePost);
     const [result, setResult] = useState<RoomInfo>({} as any);
+    const [copyText, setCopyText] = useState("");
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const post = event.target.value
@@ -57,6 +60,10 @@ const PostReaderPage = () => {
 
         setPost(post);
     };
+
+    const handleCopy = () => {
+        //
+    }
 
     const handleCompute = () => {
         const name = CondoList.find((condoName) =>
@@ -87,6 +94,7 @@ const PostReaderPage = () => {
                 fridge: fridge
             }
         });
+        setCopyText(name);
     }
 
     return (
@@ -100,19 +108,18 @@ const PostReaderPage = () => {
                 onChange={handleChange}
             />
             <Button variant="contained" onClick={handleCompute} sx={{ my: 1 }}>Compute</Button>
-            {/* <TextField
-                label="Result"
-                multiline
-                rows={9}
-                sx={{ display: 'flex', mt: 1 }}
-                value={result}
-            /> */}
             <TableContainer component={Paper}>
                 <Table>
                     <TableBody>
                         <TableRow>
                             <TableCell>Condo name</TableCell>
-                            <TableCell colSpan={3}>{result.name}</TableCell>
+                            <TableCell>{result.name}</TableCell>
+                            <TableCell colSpan={2}>
+                                <CopyToClipboard text={copyText}>
+                                    <span>Copy to clipboard with span</span>
+                                </CopyToClipboard>
+                                <Button variant="contained" color="success" onClick={handleCopy}>Copy</Button>
+                            </TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>Rent price</TableCell>
@@ -134,7 +141,7 @@ const PostReaderPage = () => {
                         </TableRow>
                         <TableRow>
                             <TableCell>Funiture</TableCell>
-                            <TableCell colSpan={3}>{result.furniture.fridge ? 'fridge' : ''}</TableCell>
+                            <TableCell colSpan={3}>{result.furniture?.fridge ? 'fridge' : ''}</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
