@@ -15,6 +15,7 @@ import {
     FLOOR_ENG_REGEX,
     ROOM_TYPE_REGEX,
     FRIDGE_REGEX,
+    TV_REGEX,
 } from '../constants/PostReaderRegex';
 
 const boxStyle = {
@@ -38,6 +39,7 @@ interface RoomInfo {
     lineID: string;
     furniture: {
         fridge: boolean;
+        tv: boolean;
     }
 }
 
@@ -56,6 +58,7 @@ const PostReaderPage = () => {
             .replace(/\s\s+/g, ' ')
             .replaceAll(' : ', ': ')
             .replace('พระรามเก้า', 'Rama9')
+            .replace('ชั่น', 'ชั้น')
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ')
 
         setPost(post);
@@ -80,6 +83,7 @@ const PostReaderPage = () => {
 
         // Furniture
         const fridge = FRIDGE_REGEX.test(post);
+        const tv = TV_REGEX.test(post);
 
         setResult({
             name: name,
@@ -91,7 +95,8 @@ const PostReaderPage = () => {
             tel: tel,
             lineID: lineID,
             furniture: {
-                fridge: fridge
+                fridge: fridge,
+                tv: tv
             }
         });
         setCopyText(name);
@@ -116,9 +121,8 @@ const PostReaderPage = () => {
                             <TableCell>{result.name}</TableCell>
                             <TableCell colSpan={2}>
                                 <CopyToClipboard text={copyText}>
-                                    <span>Copy to clipboard with span</span>
+                                    <Button variant="contained" color="success">Copy</Button>
                                 </CopyToClipboard>
-                                <Button variant="contained" color="success" onClick={handleCopy}>Copy</Button>
                             </TableCell>
                         </TableRow>
                         <TableRow>
@@ -141,7 +145,10 @@ const PostReaderPage = () => {
                         </TableRow>
                         <TableRow>
                             <TableCell>Funiture</TableCell>
-                            <TableCell colSpan={3}>{result.furniture?.fridge ? 'fridge' : ''}</TableCell>
+                            <TableCell colSpan={3}>
+                                {result.furniture?.fridge ? '✅ Fridge' : ''}
+                                {result.furniture?.tv ? '✅ TV' : ''}
+                            </TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

@@ -270,6 +270,9 @@ const CondoList: string[] = [
   "Kave Town Space",
   "Grand Park Town",
   "Icondo Green Space",
+  "Life @ Phahon 18",
+  "Regent Orchid สุขุมวิท 101",
+  "regent home 22",
 ];
 
 export default CondoList;

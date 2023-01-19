@@ -22,4 +22,5 @@ export const TEL_REGEX =
 export const LINE_ID_REGEX = /(ไลน์|Line ID|Line)(.*:\s*|\.| )(.*)(\s)?/i;
 
 // Furniture
-export const FRIDGE_REGEX = /ตู้เย็น/i;
+export const FRIDGE_REGEX = /(ตู้เย็น|Refrigerator)/i;
+export const TV_REGEX = /(TV \+ remote)/i;
