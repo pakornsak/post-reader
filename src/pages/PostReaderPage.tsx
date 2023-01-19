@@ -14,7 +14,8 @@ import {
     FLOOR_ENG_REGEX,
     ROOM_TYPE_REGEX,
     OWNER_REGEX,
-    OWNER2_REGEX
+    OWNER2_REGEX,
+    FRIDGE_REGEX
 } from '../constants/PostReaderRegex';
 
 const boxStyle = {
@@ -26,8 +27,8 @@ const boxStyle = {
     borderRadius: 1,
 };
 
-const exec = (regex: RegExp, input: string) => {
-    const match = regex.exec(input)
+const exec = (regex: RegExp, post: string) => {
+    const match = regex.exec(post)
     return match || ["", "", "", ""];
 }
 
@@ -36,25 +37,30 @@ const PostReaderPage = () => {
     const [result, setResult] = useState("");
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setPost(event.target.value);
-    };
-
-    const handleCompute = () => {
-        const input = post
+        const post = event.target.value
             .replace(/\s\s+/g, ' ')
             .replaceAll(' : ', ': ')
             .replace('พระรามเก้า', 'Rama9')
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ')
-            ;
-        const name = CondoList.find((condoName) => input.toLowerCase().includes(condoName.toLowerCase())) || "";
 
-        const price = exec(PRICE_REGEX, input.replaceAll('/', ''))[1] || exec(PRICE2_REGEX, input)[3];
-        const floor = exec(FLOOR_REGEX, input)[3] || exec(FLOOR_ENG_REGEX, input)[1];
-        const roomType = exec(ROOM_TYPE_REGEX, input)[1] || exec(BED_ROOM_REGEX, input)[1] + " BR";
-        const roomSize = exec(ROOM_SIZE_REGEX, input)[1] || exec(ROOM_SIZE2_REGEX, input)[1];
-        const owner = exec(OWNER2_REGEX, input)[1] || exec(OWNER_REGEX, input)[2].trim();
-        const tel = exec(TEL_REGEX, input)[0];
-        const lineID = exec(LINE_ID_REGEX, input)[3].trim();
+        setPost(post);
+    };
+
+    const handleCompute = () => {
+        const name = CondoList.find((condoName) =>
+            post.toLowerCase().replaceAll(' ', '').includes(condoName.toLowerCase().replaceAll(' ', ''))) || "";
+
+        // Info
+        const price = exec(PRICE2_REGEX, post)[3] || exec(PRICE_REGEX, post.replaceAll('/', ''))[1];
+        const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
+        const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
+        const roomSize = exec(ROOM_SIZE_REGEX, post)[1] || exec(ROOM_SIZE2_REGEX, post)[1];
+        // const owner = exec(OWNER2_REGEX, post)[1] || exec(OWNER_REGEX, post)[2].trim();
+        const tel = exec(TEL_REGEX, post)[0];
+        const lineID = exec(LINE_ID_REGEX, post)[3].trim();
+
+        // Furniture
+        // const fridge = FRIDGE_REGEX.test(post);
 
         const info = [
             'name: ' + name,
@@ -62,9 +68,10 @@ const PostReaderPage = () => {
             'floor: ' + floor,
             `roomType: ${roomType}`,
             'roomSize: ' + roomSize,
-            'owner: ' + owner,
+            // 'owner: ' + owner,
             'tel: ' + tel,
             'Line: ' + lineID,
+            // 'fridge: ' + fridge,
         ].join('\n');
 
         setResult(info);
@@ -75,7 +82,7 @@ const PostReaderPage = () => {
             <TextField
                 label="Facebook post"
                 multiline
-                rows={15}
+                rows={12}
                 sx={{ display: 'flex', mb: 1 }}
                 value={post}
                 onChange={handleChange}
@@ -84,7 +91,7 @@ const PostReaderPage = () => {
             <TextField
                 label="Result"
                 multiline
-                rows={8}
+                rows={9}
                 sx={{ display: 'flex', mt: 1 }}
                 value={result}
             />
