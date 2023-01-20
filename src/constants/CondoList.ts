@@ -343,6 +343,8 @@ const CondoList: string[] = [
   "พาร์ค รามอินทรา",
   "The stage taopoon interchange",
   "THE BASE Phetkasem",
+  "The Cube Plus Chaengwattana",
+  "LPN บดินทร์เดชา", //ลุมพินีคอนโดทาวน์ บดินทรเดชา - รามคำแหง
 ];
 
 export default CondoList;

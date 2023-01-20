@@ -68,6 +68,7 @@ const PostReaderPage = () => {
         const post = event.target.value
             .replace(/\s\s+/g, ' ')
             .replaceAll(' : ', ': ')
+            .replace('Top contributor · ', '')
             .replace('พระรามเก้า', 'Rama9')
             .replaceAll('ชั่น', 'ชั้น')//typo
             .replace('สเตชั้น', 'สเตชั่น')
@@ -92,6 +93,8 @@ const PostReaderPage = () => {
         const owner = exec(OWNER_REGEX, post)[1] || exec(OWNER1_REGEX, post)[2] || exec(OWNER2_REGEX, post)[1]?.trim();
         const tel = exec(TEL_REGEX, post)[0];
         const lineID = exec(LINE_ID_REGEX, post)[3]?.trim();
+
+        // console.log(exec(OWNER_REGEX, post));
 
         // Electric
         const fridge = FRIDGE_REGEX.test(post);
