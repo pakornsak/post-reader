@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Box, Button, Chip, Paper, Snackbar, SnackbarOrigin, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
+import { Box, Button, Chip, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ExamplePost from '../constants/ExamplePost';
 import CondoList from '../constants/CondoList';
@@ -22,9 +22,9 @@ import {
     SELL_PRICE_REGEX,
     SELL_PRICE2_REGEX,
     SELL_PRICE1_REGEX,
-    OWNER2_REGEX,
-    OWNER1_REGEX,
     OWNER_REGEX,
+    TEL_NAME_REGEX,
+    TEL_NAME2_REGEX,
 } from '../constants/PostReaderRegex';
 import { exec } from '../helpers/RegExHelper';
 import { RoomInfo } from '../models/RoomInfo';
@@ -52,7 +52,7 @@ const toStringLine = (room: RoomInfo): string => {
         room.furniture.waterHeater ? "X" : "",//waterHeater
         room.furniture.washingMachine ? "X" : "",//WashingMachine
         room.owner,//Owner
-        room.tel,//Tel
+        room.tel + (room.telName && ` (${room.telName})`),//Tel
         room.lineID,//Line
     ].join("\t");
     return record;
@@ -60,7 +60,7 @@ const toStringLine = (room: RoomInfo): string => {
 
 const PostReaderPage = () => {
     const [post, setPost] = useState(ExamplePost);
-    const [result, setResult] = useState<RoomInfo>({} as any);
+    const [room, setRoom] = useState<RoomInfo>({} as any);
     const [copyText, setCopyText] = useState("");
     const [modal, setModal] = React.useState(false);
 
@@ -90,7 +90,8 @@ const PostReaderPage = () => {
         const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
         const roomSize = exec(ROOM_SIZE_REGEX, post)[1] || exec(ROOM_SIZE2_REGEX, post)[1];
-        const owner = exec(OWNER_REGEX, post)[1] || exec(OWNER1_REGEX, post)[2] || exec(OWNER2_REGEX, post)[1]?.trim();
+        const owner = exec(OWNER_REGEX, post)[1]
+        const telName = exec(TEL_NAME_REGEX, post)[2] || exec(TEL_NAME2_REGEX, post)[1]?.trim();
         const tel = exec(TEL_REGEX, post)[0];
         const lineID = exec(LINE_ID_REGEX, post)[3]?.trim();
 
@@ -103,7 +104,7 @@ const PostReaderPage = () => {
         const waterHeater = WATER_HEATER_REGEX.test(post);
         const washingMachine = WASHING_MACHINE_REGEX.test(post);
 
-        setResult({
+        setRoom({
             name: name,
             price: price,
             sellPrice: sellPrice,
@@ -111,6 +112,7 @@ const PostReaderPage = () => {
             roomType: roomType,
             roomSize: roomSize,
             owner: owner,
+            telName: telName,
             tel: tel,
             lineID: lineID,
             furniture: {
@@ -126,7 +128,7 @@ const PostReaderPage = () => {
 
     const handleSave = () => {
         const items: string[] = JSON.parse(localStorage.getItem(ITEMS_KEY) || "[]");
-        items.push(toStringLine(result));
+        items.push(toStringLine(room));
         localStorage.setItem(ITEMS_KEY, JSON.stringify(items));
         setCopyText(items.join("\n"));
         setModal(true)
@@ -152,7 +154,7 @@ const PostReaderPage = () => {
                     <TableBody>
                         <TableRow>
                             <TableCell>Condo name</TableCell>
-                            <TableCell>{result.name}</TableCell>
+                            <TableCell>{room.name}</TableCell>
                             <TableCell colSpan={2}>
                                 <Button variant="contained" color="primary" size="small" onClick={handleSave}>Save</Button>
                                 <CopyToClipboard text={copyText}>
@@ -161,35 +163,35 @@ const PostReaderPage = () => {
                             </TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell>{result.price ? 'Rent price' : 'Sell Price'}</TableCell>
-                            <TableCell>{result.price || result.sellPrice}</TableCell>
+                            <TableCell>{room.price ? 'Rent price' : 'Sell Price'}</TableCell>
+                            <TableCell>{room.price || room.sellPrice}</TableCell>
                             <TableCell>Floor</TableCell>
-                            <TableCell>{result.floor}</TableCell>
+                            <TableCell>{room.floor}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>Type</TableCell>
-                            <TableCell>{result.roomType}</TableCell>
+                            <TableCell>{room.roomType}</TableCell>
                             <TableCell>Size</TableCell>
-                            <TableCell>{result.roomSize} sq.m.</TableCell>
+                            <TableCell>{room.roomSize} sq.m.</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>owner</TableCell>
-                            <TableCell colSpan={3}>{result.owner}</TableCell>
+                            <TableCell colSpan={3}>{room.owner}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>Tel</TableCell>
-                            <TableCell>{result.tel}</TableCell>
+                            <TableCell>{room.tel}{room.telName && ` (${room.telName})`}</TableCell>
                             <TableCell>Line</TableCell>
-                            <TableCell>{result.lineID}</TableCell>
+                            <TableCell>{room.lineID}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>Electical</TableCell>
                             <TableCell colSpan={3}>
-                                {result.furniture?.fridge ? <Chip label="✅ Fridge" /> : <Chip label="❌ Fridge" />}
-                                {result.furniture?.tv ? <Chip label="✅ TV" /> : <Chip label="❌ TV" />}
-                                {result.furniture?.microwave && <Chip label="✅ Microwave" />}
-                                {result.furniture?.waterHeater && <Chip label="✅ Water Heater" />}
-                                {result.furniture?.washingMachine ? <Chip label="✅ Washing Machine" /> : <Chip label="❌ Washing Machine" />}
+                                {room.furniture?.fridge ? <Chip label="✅ Fridge" /> : <Chip label="❌ Fridge" />}
+                                {room.furniture?.tv ? <Chip label="✅ TV" /> : <Chip label="❌ TV" />}
+                                {room.furniture?.microwave && <Chip label="✅ Microwave" />}
+                                {room.furniture?.waterHeater && <Chip label="✅ Water Heater" />}
+                                {room.furniture?.washingMachine ? <Chip label="✅ Washing Machine" /> : <Chip label="❌ Washing Machine" />}
                             </TableCell>
                         </TableRow>
                     </TableBody>

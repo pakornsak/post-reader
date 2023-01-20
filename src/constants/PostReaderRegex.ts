@@ -23,8 +23,10 @@ export const BED_ROOM_REGEX = /(\d|One)( )?(bedrooms|bed|ห้องนอน|�
 export const BATH_ROOM_REGEX = /(\d) bathrooms/i;
 
 export const OWNER_REGEX = /([^·\n]+)(\n\w+)? ·/i;
-export const OWNER1_REGEX = /(Contact |Contact:|คุณ)([^\s]+( [^\s]+)?)/i;
-export const OWNER2_REGEX = /ติดต่อ(: )?(\D+)\s/i;
+
+export const TEL_NAME_REGEX =
+  /(Contact |Contact:|คุณ|Khun )([^\s]+( [^\s]+)?)/i;
+export const TEL_NAME2_REGEX = /ติดต่อ(: )?(\D+)\s/i;
 
 export const ROOM_SIZE_REGEX =
   /(\d+(\.\d{1,2})?)( )?(ตร\.ม|ตรม|ตารางเมตร|sqm|sq\.m|square meters)/i;
