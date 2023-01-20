@@ -337,6 +337,12 @@ const CondoList: string[] = [
   "Artisan Ratchada",
   "Rhythm Sukhumvit 42",
   "Ashton Morph 38",
+  "ศุภาลัย City Home",
+  "Life @ Ratchada",
+  "Venio Sukhumvit 10",
+  "พาร์ค รามอินทรา",
+  "The stage taopoon interchange",
+  "THE BASE Phetkasem",
 ];
 
 export default CondoList;

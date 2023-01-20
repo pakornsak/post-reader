@@ -23,6 +23,7 @@ import {
     SELL_PRICE2_REGEX,
     SELL_PRICE1_REGEX,
     OWNER2_REGEX,
+    OWNER1_REGEX,
     OWNER_REGEX,
 } from '../constants/PostReaderRegex';
 import { exec } from '../helpers/RegExHelper';
@@ -88,7 +89,7 @@ const PostReaderPage = () => {
         const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
         const roomSize = exec(ROOM_SIZE_REGEX, post)[1] || exec(ROOM_SIZE2_REGEX, post)[1];
-        const owner = exec(OWNER_REGEX, post)[2] || exec(OWNER2_REGEX, post)[1]?.trim();
+        const owner = exec(OWNER_REGEX, post)[1] || exec(OWNER1_REGEX, post)[2] || exec(OWNER2_REGEX, post)[1]?.trim();
         const tel = exec(TEL_REGEX, post)[0];
         const lineID = exec(LINE_ID_REGEX, post)[3]?.trim();
 
