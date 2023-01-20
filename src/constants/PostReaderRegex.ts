@@ -22,20 +22,20 @@ export const ROOM_TYPE_REGEX =
 export const BED_ROOM_REGEX = /(\d|One)( )?(bedrooms|bed|ห้องนอน|นอน)/i;
 export const BATH_ROOM_REGEX = /(\d) bathrooms/i;
 
-export const OWNER_REGEX = /([^·\n]+)(\n\w+)? ·/i;
-
-export const TEL_NAME_REGEX =
-  /(Contact |Contact:|คุณ|Khun )([^\s]+( [^\s]+)?)/i;
-export const TEL_NAME2_REGEX = /ติดต่อ(: )?(\D+)\s/i;
-
-export const ROOM_SIZE_REGEX =
-  /(\d+(\.\d{1,2})?)( )?(ตร\.ม|ตรม|ตารางเมตร|sqm|sq\.m|square meters)/i;
-export const ROOM_SIZE2_REGEX = /ขนาด.* (\d+(\.\d{1,2})?)/i;
+export const OWNER_REGEX = /([^·\n]+)(\n\w+)? ·/i; //\w+ \d{1,2}, \d{4} at \d{1-2}:\d{2} (AM|PM)
 
 export const TEL_REGEX =
   /([+]{0,1})(([0-9][ ]{0,1}){9,12}|([0-9][\\/]{0,1}){9,12}|([0-9][-]{0,1}){9,12}|([0-9][.]{0,1}){9,12})[0-9]{1}/;
 
-export const LINE_ID_REGEX = /(ไลน์|Line ID|Line)(.*:\s*|\.| )([^\s]+)(\s)?/i;
+export const TEL_NAME_REGEX = /(Contact:|คุณ|ติดต่อ |Khun )([^\s\d]+)/i;
+export const TEL_NAME2_REGEX =
+  /([+]{0,1})(([0-9][ ]{0,1}){9,12}|([0-9][\\/]{0,1}){9,12}|([0-9][-]{0,1}){9,12}|([0-9][.]{0,1}){9,12})[0-9]{1}( )?[\\(]([^/]+)[\\)]/;
+
+export const ROOM_SIZE_REGEX =
+  /(\d+(\.\d{1,2})?)(\+)?( )?(ตร\.ม|ตรม|ตารางเมตร|sqm|sq\.m|square meters|sq2)/i;
+export const ROOM_SIZE2_REGEX = /ขนาด.* (\d+(\.\d{1,2})?)/i;
+
+export const LINE_ID_REGEX = /(ไลน์|Line ID|Line)(.*:\s*|\.| )([^\s)]+)(\s)?/i;
 
 // Funitures
 // - เตียงและที่นอนสปริง(ในภายแค่ยังไม่ได้นำมาวางค่ะมีฟูกให้)

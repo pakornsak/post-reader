@@ -52,7 +52,7 @@ const toStringLine = (room: RoomInfo): string => {
         room.furniture.waterHeater ? "X" : "",//waterHeater
         room.furniture.washingMachine ? "X" : "",//WashingMachine
         room.owner,//Owner
-        room.tel + (room.telName && ` (${room.telName})`),//Tel
+        room.tel + (room.telName ? ` (${room.telName})` : ''),//Tel
         room.lineID,//Line
     ].join("\t");
     return record;
@@ -69,6 +69,11 @@ const PostReaderPage = () => {
             .replace(/\s\s+/g, ' ')
             .replaceAll(' : ', ': ')
             .replace('Top contributor · ', '')
+            .replace(' shared a Marketplace post.', '')
+            .replace(/\w+ \d{1,2} at \d{1,2}:\d{2} (AM|PM)/i, '1d')
+            .replaceAll('ค่ะ', '')
+            .replace(/ติดต่อ line/i, 'ติดต่อ\nline')
+            .replace('ห้อง Stu', 'ห้อง Studio')
             .replace('พระรามเก้า', 'Rama9')
             .replaceAll('ชั่น', 'ชั้น')//typo
             .replace('สเตชั้น', 'สเตชั่น')
@@ -91,11 +96,11 @@ const PostReaderPage = () => {
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
         const roomSize = exec(ROOM_SIZE_REGEX, post)[1] || exec(ROOM_SIZE2_REGEX, post)[1];
         const owner = exec(OWNER_REGEX, post)[1]
-        const telName = exec(TEL_NAME_REGEX, post)[2] || exec(TEL_NAME2_REGEX, post)[1]?.trim();
+        const telName = exec(TEL_NAME_REGEX, post)[2] || exec(TEL_NAME2_REGEX, post)[8];
         const tel = exec(TEL_REGEX, post)[0];
         const lineID = exec(LINE_ID_REGEX, post)[3]?.trim();
 
-        // console.log(exec(OWNER_REGEX, post));
+        // console.log(exec(TEL_NAME2_REGEX, post));
 
         // Electric
         const fridge = FRIDGE_REGEX.test(post);
@@ -157,7 +162,7 @@ const PostReaderPage = () => {
                             <TableCell>{room.name}</TableCell>
                             <TableCell colSpan={2}>
                                 <Button variant="contained" color="primary" size="small" onClick={handleSave}>Save</Button>
-                                <CopyToClipboard text={copyText}>
+                                <CopyToClipboard text={copyText} onCopy={() => console.log(copyText)}>
                                     <Button variant="contained" color="success" size="small">Copy</Button>
                                 </CopyToClipboard>
                             </TableCell>

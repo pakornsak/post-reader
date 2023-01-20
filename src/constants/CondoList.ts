@@ -345,6 +345,19 @@ const CondoList: string[] = [
   "THE BASE Phetkasem",
   "The Cube Plus Chaengwattana",
   "LPN บดินทร์เดชา", //ลุมพินีคอนโดทาวน์ บดินทรเดชา - รามคำแหง
+  "Knightsbridge สุขุมวิท-เทพารักษ์",
+  "ลุมพินี ทาวน์ รามอินทรา-ลาดปลาเค้า เฟส 1",
+  "The Origin Onnut",
+  "Lumpini Place Rama",
+  "Supalai Loft Chaengwattana",
+  "ลุมพินี พาร์ค เพชรเกษม 98",
+  "ดิ เอ็กซ์เซล กรูฟ ลาซาล 52",
+  "Elio Del Moss @พหล34",
+  "RHYTHM SATHORN",
+  "ลุมพินี เพลส บางนา",
+  "Elio Sukhumvit 64",
+  "Whizdom Punnawithi Station",
+  "UNIO CONDO SUKHUMVIT 72",
 ];
 
 export default CondoList;
