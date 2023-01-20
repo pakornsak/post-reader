@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Box, Button, Chip, Paper, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
+import { Box, Button, Chip, Paper, Snackbar, SnackbarOrigin, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ExamplePost from '../constants/ExamplePost';
 import CondoList from '../constants/CondoList';
@@ -29,11 +29,39 @@ import { exec } from '../helpers/RegExHelper';
 import { RoomInfo } from '../models/RoomInfo';
 import { boxStyle } from './PostReaderPage.styled';
 
+const ITEMS_KEY = 'items';
+
+const toStringLine = (room: RoomInfo): string => {
+    const record = [
+        "",//Zone
+        "",//BTS บางหว้า
+        "",//600m
+        room.price,//9,000
+        room.roomType,//1 BR
+        room.name,//Aspire สาทร-ราชพฤกษ์
+        "",//Fully furnished
+        "",//ready-to-move-in
+        room.roomSize,//size
+        room.floor,//floor
+        "",//direction
+        "",//Bed
+        room.furniture.microwave ? "X" : "",//Microwave
+        room.furniture.tv ? "X" : "",//TV
+        room.furniture.sofa ? "X" : "",//Sofa
+        room.furniture.waterHeater ? "X" : "",//waterHeater
+        room.furniture.washingMachine ? "X" : "",//WashingMachine
+        room.owner,//Owner
+        room.tel,//Tel
+        room.lineID,//Line
+    ].join("\t");
+    return record;
+}
 
 const PostReaderPage = () => {
     const [post, setPost] = useState(ExamplePost);
     const [result, setResult] = useState<RoomInfo>({} as any);
     const [copyText, setCopyText] = useState("");
+    const [modal, setModal] = React.useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const post = event.target.value
@@ -47,7 +75,6 @@ const PostReaderPage = () => {
             .replace('vาย', 'ขาย')//typo
             .replace('เอ สเปซ', 'A Space')
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ');
-
         setPost(post);
     };
 
@@ -61,10 +88,9 @@ const PostReaderPage = () => {
         const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
         const roomSize = exec(ROOM_SIZE_REGEX, post)[1] || exec(ROOM_SIZE2_REGEX, post)[1];
-        console.log(exec(OWNER_REGEX, post))
-        const owner = exec(OWNER_REGEX, post)[2] || exec(OWNER2_REGEX, post)[1].trim();
+        const owner = exec(OWNER_REGEX, post)[2] || exec(OWNER2_REGEX, post)[1]?.trim();
         const tel = exec(TEL_REGEX, post)[0];
-        const lineID = exec(LINE_ID_REGEX, post)[3].trim();
+        const lineID = exec(LINE_ID_REGEX, post)[3]?.trim();
 
         // Electric
         const fridge = FRIDGE_REGEX.test(post);
@@ -95,37 +121,15 @@ const PostReaderPage = () => {
     }
 
     const handleSave = () => {
-        const key = 'items';
-        const items: RoomInfo[] = JSON.parse(localStorage.getItem(key) || "[]");
-        items.push(result);
-        localStorage.setItem(key, JSON.stringify(items));
+        const items: string[] = JSON.parse(localStorage.getItem(ITEMS_KEY) || "[]");
+        items.push(toStringLine(result));
+        localStorage.setItem(ITEMS_KEY, JSON.stringify(items));
+        setCopyText(items.join("\n"));
+        setModal(true)
     }
 
-    const handleCopy = () => {
-        // localStorage.getItem();
-        const record = [
-            "",//Zone
-            "",//BTS บางหว้า
-            "",//600m
-            result.price,//9,000
-            result.roomType,//1 BR
-            result.name,//Aspire สาทร-ราชพฤกษ์
-            "",//Fully furnished
-            "",//ready-to-move-in
-            result.roomSize,//size
-            result.floor,//floor
-            "",//direction
-            "",//Bed
-            result.furniture.microwave ? "X" : "",//Microwave
-            result.furniture.tv ? "X" : "",//TV
-            result.furniture.sofa ? "X" : "",//Sofa
-            result.furniture.waterHeater ? "X" : "",//waterHeater
-            result.furniture.washingMachine ? "X" : "",//WashingMachine
-            result.owner,//Owner
-            result.tel,//Tel
-            result.lineID,//Line
-        ].join("\t");
-        // console.log(record)
+    const handleClose = () => {
+        setModal(false)
     }
 
     return (
@@ -146,9 +150,9 @@ const PostReaderPage = () => {
                             <TableCell>Condo name</TableCell>
                             <TableCell>{result.name}</TableCell>
                             <TableCell colSpan={2}>
-                                <Button variant="contained" color="success" size="small" onClick={handleSave}>Save</Button>
-                                <CopyToClipboard text={copyText} onCopy={handleCopy}>
-                                    <Button variant="contained" color="secondary" size="small">Copy</Button>
+                                <Button variant="contained" color="primary" size="small" onClick={handleSave}>Save</Button>
+                                <CopyToClipboard text={copyText}>
+                                    <Button variant="contained" color="success" size="small">Copy</Button>
                                 </CopyToClipboard>
                             </TableCell>
                         </TableRow>
@@ -187,6 +191,12 @@ const PostReaderPage = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={modal}
+                onClose={handleClose}
+                message="Saved successfully"
+            />
         </Box>
     );
 }

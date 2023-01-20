@@ -331,6 +331,12 @@ const CondoList: string[] = [
   "ไอดีโอ โมบิ จรัญอินเตอร์เชนจ์",
   "ชาโต้ อินทาวน์ จรัญ 96/2",
   "i-house laguna garden",
+  "ฟูลเลอตัน สุขุมวิท",
+  "วอเตอร์มาร์ค เจ้าพระยา ริเวอร์",
+  "Parkview วิภาวดี 4",
+  "Artisan Ratchada",
+  "Rhythm Sukhumvit 42",
+  "Ashton Morph 38",
 ];
 
 export default CondoList;
