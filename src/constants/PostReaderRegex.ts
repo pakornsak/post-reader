@@ -22,8 +22,8 @@ export const ROOM_TYPE_REGEX =
 export const BED_ROOM_REGEX = /(\d|One)( )?(bedrooms|bed|ห้องนอน|นอน)/i;
 export const BATH_ROOM_REGEX = /(\d) bathrooms/i;
 
-export const OWNER_REGEX = /ติดต่อ(: )?(\D+)\s/i;
-export const OWNER2_REGEX = /คุณ([^\s]+)/i;
+export const OWNER_REGEX = /(Contact |คุณ)([^\s]+)/i;
+export const OWNER2_REGEX = /ติดต่อ(: )?(\D+)\s/i;
 
 export const ROOM_SIZE_REGEX =
   /(\d+(\.\d{1,2})?)( )?(ตร\.ม|ตรม|ตารางเมตร|sqm|sq\.m|square meters)/i;

@@ -22,37 +22,13 @@ import {
     SELL_PRICE_REGEX,
     SELL_PRICE2_REGEX,
     SELL_PRICE1_REGEX,
+    OWNER2_REGEX,
+    OWNER_REGEX,
 } from '../constants/PostReaderRegex';
 import { exec } from '../helpers/RegExHelper';
+import { RoomInfo } from '../models/RoomInfo';
+import { boxStyle } from './PostReaderPage.styled';
 
-const boxStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    p: 1,
-    m: 1,
-    bgcolor: 'background.paper',
-    borderRadius: 1,
-    backGround: '#E7EBF0'
-};
-
-interface RoomInfo {
-    name: string;
-    price: string;
-    sellPrice: string;
-    floor: string;
-    roomType: string;
-    roomSize: string;
-    owner?: string;
-    tel: string;
-    lineID: string;
-    furniture: {
-        fridge: boolean;
-        tv: boolean;
-        microwave: boolean;
-        waterHeater: boolean;
-        washingMachine: boolean;
-    }
-}
 
 const PostReaderPage = () => {
     const [post, setPost] = useState(ExamplePost);
@@ -85,7 +61,8 @@ const PostReaderPage = () => {
         const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
         const roomSize = exec(ROOM_SIZE_REGEX, post)[1] || exec(ROOM_SIZE2_REGEX, post)[1];
-        // const owner = exec(OWNER2_REGEX, post)[1] || exec(OWNER_REGEX, post)[2].trim();
+        console.log(exec(OWNER_REGEX, post))
+        const owner = exec(OWNER_REGEX, post)[2] || exec(OWNER2_REGEX, post)[1].trim();
         const tel = exec(TEL_REGEX, post)[0];
         const lineID = exec(LINE_ID_REGEX, post)[3].trim();
 
@@ -103,7 +80,7 @@ const PostReaderPage = () => {
             floor: floor,
             roomType: roomType,
             roomSize: roomSize,
-            // owner: owner,
+            owner: owner,
             tel: tel,
             lineID: lineID,
             furniture: {
@@ -115,6 +92,40 @@ const PostReaderPage = () => {
             }
         });
         setCopyText(name);
+    }
+
+    const handleSave = () => {
+        const key = 'items';
+        const items: RoomInfo[] = JSON.parse(localStorage.getItem(key) || "[]");
+        items.push(result);
+        localStorage.setItem(key, JSON.stringify(items));
+    }
+
+    const handleCopy = () => {
+        // localStorage.getItem();
+        const record = [
+            "",//Zone
+            "",//BTS บางหว้า
+            "",//600m
+            result.price,//9,000
+            result.roomType,//1 BR
+            result.name,//Aspire สาทร-ราชพฤกษ์
+            "",//Fully furnished
+            "",//ready-to-move-in
+            result.roomSize,//size
+            result.floor,//floor
+            "",//direction
+            "",//Bed
+            result.furniture.microwave ? "X" : "",//Microwave
+            result.furniture.tv ? "X" : "",//TV
+            result.furniture.sofa ? "X" : "",//Sofa
+            result.furniture.waterHeater ? "X" : "",//waterHeater
+            result.furniture.washingMachine ? "X" : "",//WashingMachine
+            result.owner,//Owner
+            result.tel,//Tel
+            result.lineID,//Line
+        ].join("\t");
+        // console.log(record)
     }
 
     return (
@@ -135,8 +146,9 @@ const PostReaderPage = () => {
                             <TableCell>Condo name</TableCell>
                             <TableCell>{result.name}</TableCell>
                             <TableCell colSpan={2}>
-                                <CopyToClipboard text={copyText}>
-                                    <Button variant="contained" color="success" size="small">Copy</Button>
+                                <Button variant="contained" color="success" size="small" onClick={handleSave}>Save</Button>
+                                <CopyToClipboard text={copyText} onCopy={handleCopy}>
+                                    <Button variant="contained" color="secondary" size="small">Copy</Button>
                                 </CopyToClipboard>
                             </TableCell>
                         </TableRow>
@@ -151,6 +163,10 @@ const PostReaderPage = () => {
                             <TableCell>{result.roomType}</TableCell>
                             <TableCell>Size</TableCell>
                             <TableCell>{result.roomSize} sq.m.</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>owner</TableCell>
+                            <TableCell colSpan={3}>{result.owner}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>Tel</TableCell>

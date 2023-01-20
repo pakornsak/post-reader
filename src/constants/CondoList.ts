@@ -329,6 +329,8 @@ const CondoList: string[] = [
   "เดอะคอนเนคพัฒนาการ 44",
   "THE BASE สะพานใหม่",
   "ไอดีโอ โมบิ จรัญอินเตอร์เชนจ์",
+  "ชาโต้ อินทาวน์ จรัญ 96/2",
+  "i-house laguna garden",
 ];
 
 export default CondoList;
