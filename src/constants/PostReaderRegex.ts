@@ -10,7 +10,7 @@ export const SELL_PRICE2_REGEX = /(\d+\.\d+ (MB|ลบ\.|ล้าน))/i;
 //ราคาเพียง : 1.19 ลบ.
 
 export const PRICE_REGEX =
-  /(\d+(,)?\d{3})( )?(ต่อเดือน|เดือน|บาท|baht|THB|฿|per month|month)/i;
+  /(\d+(,)?\d{3})( )?(ต่อเดือน|เดือน|บาท|baht|THB|฿|per month|month|mth)/i;
 export const PRICE2_REGEX = /(เช่าราคา|เช่า|เดือนละ)( )?(\d+(,)?\d{3})/i;
 
 export const FLOOR_REGEX = /(Floor|ชั้น|ชั้นที่)( |: )?(\d+)/i;
@@ -62,3 +62,4 @@ export const WASHING_MACHINE_REGEX = /(เครื่องซักผ้า)/
 //   /(เตาไฟฟ้า/induction)/i
 //   /digital door lock/i
 //   เครื่องดูดควัน
+// internet
