@@ -273,6 +273,7 @@ const CondoList: string[] = [
   "Regent Orchid สุขุมวิท 101",
   "regent home 22",
   "The Privacy Condo (รัชดา-สุทธิสาร)",
+  "The president สาธร-ราชพฤกษ์ เฟส 2",
   "The President สาทร-ราชพฤกษ์ เฟส 3",
   "Esta bliss มีนบุรี",
   "The Excel Hideaway สุขุมวิท 71",
@@ -377,6 +378,15 @@ const CondoList: string[] = [
   "ซิตี้โฮม รัชดา-ปิ่นเกล้า 1",
   "รีเจ้นท์ ศรีนครินทร์",
   "Chapter charoennakhon-riverside",
+  "ลุมพินี เพลส วอเตอร์ คลิฟ",
+  "Chaiyapruek Place",
+  "IKON 77",
+  "Rye Taldadphu",
+  "U Delight @Talat Phlu",
+  "Ashton Asoke",
+  "ลุมพินีวิลล์ ราม 60/2",
+  "The Muve Kaset by Sansiri",
+  "Regent Home 20",
 ];
 
 export default CondoList;

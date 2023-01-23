@@ -5,6 +5,7 @@ export interface RoomInfo {
   floor: string;
   roomType: string;
   roomSize: string;
+  station: string;
   owner?: string;
   telName: string;
   tel: string;

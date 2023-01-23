@@ -25,6 +25,7 @@ import {
     OWNER_REGEX,
     TEL_NAME_REGEX,
     TEL_NAME2_REGEX,
+    BTS_MRT_REGEX,
 } from '../constants/PostReaderRegex';
 import { exec } from '../helpers/RegExHelper';
 import { RoomInfo } from '../models/RoomInfo';
@@ -35,7 +36,7 @@ const ITEMS_KEY = 'items';
 const toStringLine = (room: RoomInfo): string => {
     const record = [
         "",//Zone
-        "",//BTS บางหว้า
+        room.station,//BTS บางหว้า
         "",//600m
         room.price,//9,000
         room.roomType,//1 BR
@@ -70,6 +71,7 @@ const PostReaderPage = () => {
             .replaceAll(' : ', ': ')
             .replace('Top contributor · ', '')
             .replace(/ shared a (Marketplace post|link|post)\./, '')
+            .replace('Owner Only ปล่อยเช่าและขายคอนโดจากเจ้าของโดยตรง', '')
             .replace(/ is at .+\n/, '\n')
             .replace(/\w+ \d{1,2} at \d{1,2}:\d{2} (AM|PM)/i, '1d')
             .replace(/\w+ \d{1,2}, \d{4}/i, '1m')
@@ -93,6 +95,7 @@ const PostReaderPage = () => {
 
         // Info
         const sellPrice = exec(SELL_PRICE_REGEX, post)[1] || exec(SELL_PRICE1_REGEX, post)[1] || exec(SELL_PRICE2_REGEX, post)[1];
+        const station = exec(BTS_MRT_REGEX, post)[0];
         const price = exec(PRICE2_REGEX, post)[3] || exec(PRICE_REGEX, post.replaceAll('/', ''))[1];
         const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
@@ -102,7 +105,7 @@ const PostReaderPage = () => {
         const tel = exec(TEL_REGEX, post)[0];
         const lineID = exec(LINE_ID_REGEX, post)[3]?.trim();
 
-        // console.log(exec(TEL_NAME2_REGEX, post));
+        // console.log(exec(BTS_MRT_REGEX, post));
 
         // Electric
         const fridge = FRIDGE_REGEX.test(post);
@@ -118,6 +121,7 @@ const PostReaderPage = () => {
             floor: floor,
             roomType: roomType,
             roomSize: roomSize,
+            station: station,
             owner: owner,
             telName: telName,
             tel: tel,
@@ -150,7 +154,7 @@ const PostReaderPage = () => {
             <TextField
                 label="Facebook post"
                 multiline
-                rows={12}
+                rows={11}
                 sx={{ display: 'flex' }}
                 value={post}
                 onChange={handleChange}
@@ -168,6 +172,10 @@ const PostReaderPage = () => {
                                     <Button variant="contained" color="success" size="small">Copy</Button>
                                 </CopyToClipboard>
                             </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>BTS/MRT</TableCell>
+                            <TableCell colSpan={3}>{room.station}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>{room.price ? 'Rent price' : 'Sell Price'}</TableCell>
