@@ -111,6 +111,10 @@ const PostReaderPage = () => {
             .replace('Bluecove', 'Blucove')//typo
             .replace('พาร์ค', 'ปาร์ค')
             .replace('บดินทร์เดชา', 'บดินทรเดชา')//typo
+            .replace('รีสอร์ต', 'รีสอร์ท')
+            .replace('เซนทริค', 'เซ็นทริค')
+            .replace('Huaikwang', 'Huaikhwang')//typo
+            .replace('Knightbridge', 'KnightsBridge')
             .replace('Asoak', 'Asoke')//typo
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ')
             .toLowerCase()
