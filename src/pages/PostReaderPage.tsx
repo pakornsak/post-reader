@@ -78,33 +78,46 @@ const PostReaderPage = () => {
             .replaceAll('ค่ะ', '')
             .replace(/ติดต่อ line/i, 'ติดต่อ\nline')
             .replace('ห้อง Stu', 'ห้อง Studio')
-            .replace('พระรามเก้า', 'Rama9')
+            .replace('พระรามเก้า', 'Rama 9')
             .replaceAll('ชั่น', 'ชั้น')//typo
             .replace('สเตชั้น', 'สเตชั่น')//typo
             .replace('สขุมวิท', 'สุขุมวิท')//typo
-            .replace('Asoak', 'Asoke')//typo
             .replace('vาย', 'ขาย')//typo
-            .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ');
+            ;
         setPost(post);
     };
 
     const findCondoName = (condo: Property, post: string) => {
-        const modifiedPost = post.toLowerCase()
-            .replaceAll(' ', '')
-            .replace('-', '')
-            .replace('LPN', 'Lumpini')
-            .replace('Chatujak', 'Chatuchak')
-            .replace('Bluecove', 'Blucove')
-            .replace('พาร์ค', 'ปาร์ค')
-            .replace('เอ สเปซ', 'A Space');
+        const enPost = post
+            .replace('หลังสวน', 'langsuan')
+            .replace('สุขุมวิท', 'sukhumvit')
+            .replace('เพชรเกษม', 'Phetkasem')
+            .replace('เอสเปซ', 'aspace')
+            .replaceAll(' ', '');
+        const thPost = post
+            .replace('ideo', 'ไอดีโอ')
+            .replaceAll(' ', '');
         return (
-            modifiedPost.includes(condo.en.toLowerCase().replaceAll(' ', '').replace('-', '')) ||
-            (condo.th && modifiedPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', '')))
+            enPost.includes(condo.en.toLowerCase().replaceAll(' ', '').replace('-', '')) ||
+            (condo.th &&
+                thPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', '')))
         )
     }
 
     const handleCompute = () => {
-        const condo = CondoList.find((condo) => findCondoName(condo, post));
+        const modifiedPost = post
+            .replace('LPN', 'Lumpini')
+            .replace('Chatujak', 'Chatuchak')//typo
+            .replace('Bluecove', 'Blucove')//typo
+            .replace('พาร์ค', 'ปาร์ค')
+            .replace('บดินทร์เดชา', 'บดินทรเดชา')//typo
+            .replace('Asoak', 'Asoke')//typo
+            .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ')
+            .toLowerCase()
+            .replaceAll(' ', '')
+            .replace('-', '')
+
+        const condo = CondoList.find((condo) => findCondoName(condo, modifiedPost));
         const name = condo?.en || "";
 
         // Info

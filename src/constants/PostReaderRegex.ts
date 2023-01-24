@@ -10,7 +10,7 @@ export const SELL_PRICE2_REGEX = /(\d+\.\d+ (MB|ลบ\.|ล้าน))/i
 //ราคาเพียง : 1.19 ลบ.
 
 export const PRICE_REGEX = /(\d+(,)?\d{3}|\d{2}k)( )?(ต่อเดือน|เดือน|บาท|baht|THB|฿|per month|month|mth|Bmonth|\.-)/i
-export const PRICE2_REGEX = /(เช่าราคา|เช่า|เดือนละ)( )?(\d+(,)?\d{3})/i
+export const PRICE2_REGEX = /(เช่าราคา|เช่า|เดือนละ|Rent)( )?(\d+(,)?\d{3})/i
 
 export const BTS_MRT_REGEX = /(BTS|MRT)( )?(On Nut|\D[^(,\s\d)]+( ([\d]|Thonburi))?)/i
 
