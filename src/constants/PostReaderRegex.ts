@@ -13,7 +13,8 @@ export const PRICE_REGEX =
   /(\d+(,)?\d{3}|\d{2}k)( )?(ต่อเดือน|เดือน|บาท|baht|THB|฿|per month|month|mth|Bmonth|\.-)/i;
 export const PRICE2_REGEX = /(เช่าราคา|เช่า|เดือนละ)( )?(\d+(,)?\d{3})/i;
 
-export const BTS_MRT_REGEX = /(BTS|MRT)( )?(On Nut|\D[^(,\s\d]+( [\d])?)/i;
+export const BTS_MRT_REGEX =
+  /(BTS|MRT)( )?(On Nut|\D[^(,\s\d)]+( ([\d]|Thonburi))?)/i;
 
 export const FLOOR_REGEX = /(Floor|ชั้น|ชั้นที่)( |: )?(\d+)/i;
 export const FLOOR_ENG_REGEX = /(\d*)(st|nd|rd|th)? (floor|Fl\.)/i;

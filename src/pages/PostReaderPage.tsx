@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { Box, Button, Chip, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ExamplePost from '../constants/ExamplePost';
-import CondoList from '../constants/CondoList';
+import CondoList, { Property } from '../constants/CondoList';
 import {
     PRICE_REGEX,
     PRICE2_REGEX,
@@ -76,6 +76,8 @@ const PostReaderPage = () => {
             .replace(/\w+ \d{1,2} at \d{1,2}:\d{2} (AM|PM)/i, '1d')
             .replace(/\w+ \d{1,2}, \d{4}/i, '1m')
             .replaceAll('ค่ะ', '')
+            .replaceAll('พาร์ค', 'ปาร์ค')//name
+            .replace('Bluecove', 'Blucove')
             .replace(/ติดต่อ line/i, 'ติดต่อ\nline')
             .replace('ห้อง Stu', 'ห้อง Studio')
             .replace('พระรามเก้า', 'Rama9')
@@ -89,9 +91,17 @@ const PostReaderPage = () => {
         setPost(post);
     };
 
+    const findCondoName = (condo: Property, post: string) => {
+        const finalPost = post.toLowerCase().replaceAll(' ', '').replace('-', '');
+        return (
+            finalPost.includes(condo.en.toLowerCase().replaceAll(' ', '').replace('-', '')) ||
+            (condo.th && finalPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', '')))
+        )
+    }
+
     const handleCompute = () => {
-        const name = CondoList.find((condoName) =>
-            post.toLowerCase().replaceAll(' ', '').replace('-', '').includes(condoName.toLowerCase().replaceAll(' ', '').replace('-', ''))) || "";
+        const condo = CondoList.find((condo) => findCondoName(condo, post));
+        const name = condo?.en || "";
 
         // Info
         const sellPrice = exec(SELL_PRICE_REGEX, post)[1] || exec(SELL_PRICE1_REGEX, post)[1] || exec(SELL_PRICE2_REGEX, post)[1];
@@ -107,7 +117,7 @@ const PostReaderPage = () => {
 
         // console.log(exec(BTS_MRT_REGEX, post));
 
-        // Electric
+        // Electrical appliances
         const fridge = FRIDGE_REGEX.test(post);
         const tv = TV_REGEX.test(post.replace('CCTV', ''));
         const microwave = MICROWAVE_REGEX.test(post);
