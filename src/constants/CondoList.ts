@@ -78,8 +78,7 @@ const CondoList: string[] = [
   "Life @ Wireless",
   "Life Asoke Hype Rama 9",
   "Life Asoke Hype",
-  "Life Asoke Rama9",
-  "Life Asoke-rama9",
+  "Life Asoke Rama 9",
   "Life Ratchadapisek Condo",
   "Life Ratchadapisek",
   "Life Sathorn Sierra",
@@ -387,6 +386,11 @@ const CondoList: string[] = [
   "ลุมพินีวิลล์ ราม 60/2",
   "The Muve Kaset by Sansiri",
   "Regent Home 20",
+  "De Lapis (Charan 81)",
+  "rhythm phahon ari",
+  "Rhythm Ekkamai",
+  "Blossom condo @ fashion beyond",
+  "parkland เพชรเกษม​ 56",
 ];
 
 export default CondoList;

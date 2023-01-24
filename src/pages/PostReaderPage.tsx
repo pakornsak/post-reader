@@ -91,7 +91,7 @@ const PostReaderPage = () => {
 
     const handleCompute = () => {
         const name = CondoList.find((condoName) =>
-            post.toLowerCase().replaceAll(' ', '').includes(condoName.toLowerCase().replaceAll(' ', ''))) || "";
+            post.toLowerCase().replaceAll(' ', '').replace('-', '').includes(condoName.toLowerCase().replaceAll(' ', '').replace('-', ''))) || "";
 
         // Info
         const sellPrice = exec(SELL_PRICE_REGEX, post)[1] || exec(SELL_PRICE1_REGEX, post)[1] || exec(SELL_PRICE2_REGEX, post)[1];
