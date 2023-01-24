@@ -76,26 +76,30 @@ const PostReaderPage = () => {
             .replace(/\w+ \d{1,2} at \d{1,2}:\d{2} (AM|PM)/i, '1d')
             .replace(/\w+ \d{1,2}, \d{4}/i, '1m')
             .replaceAll('ค่ะ', '')
-            .replaceAll('พาร์ค', 'ปาร์ค')//name
-            .replace('Bluecove', 'Blucove')
             .replace(/ติดต่อ line/i, 'ติดต่อ\nline')
             .replace('ห้อง Stu', 'ห้อง Studio')
             .replace('พระรามเก้า', 'Rama9')
             .replaceAll('ชั่น', 'ชั้น')//typo
-            .replace('สเตชั้น', 'สเตชั่น')
+            .replace('สเตชั้น', 'สเตชั่น')//typo
             .replace('สขุมวิท', 'สุขุมวิท')//typo
             .replace('Asoak', 'Asoke')//typo
             .replace('vาย', 'ขาย')//typo
-            .replace('เอ สเปซ', 'A Space')
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ');
         setPost(post);
     };
 
     const findCondoName = (condo: Property, post: string) => {
-        const finalPost = post.toLowerCase().replaceAll(' ', '').replace('-', '');
+        const modifiedPost = post.toLowerCase()
+            .replaceAll(' ', '')
+            .replace('-', '')
+            .replace('LPN', 'Lumpini')
+            .replace('Chatujak', 'Chatuchak')
+            .replace('Bluecove', 'Blucove')
+            .replace('พาร์ค', 'ปาร์ค')
+            .replace('เอ สเปซ', 'A Space');
         return (
-            finalPost.includes(condo.en.toLowerCase().replaceAll(' ', '').replace('-', '')) ||
-            (condo.th && finalPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', '')))
+            modifiedPost.includes(condo.en.toLowerCase().replaceAll(' ', '').replace('-', '')) ||
+            (condo.th && modifiedPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', '')))
         )
     }
 
