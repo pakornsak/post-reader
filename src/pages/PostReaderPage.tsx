@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Box, Button, Chip, Paper, Snackbar, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import ExamplePost from '../constants/ExamplePost';
+import { ExamplePost, questions } from '../constants/ExamplePost';
 import CondoList, { Property } from '../constants/CondoList';
 import {
     PRICE_REGEX,
@@ -30,6 +30,7 @@ import {
 import { exec } from '../helpers/RegExHelper';
 import { RoomInfo } from '../models/RoomInfo';
 import { boxStyle } from './PostReaderPage.styled';
+import { stations } from '../constants/Stations';
 
 const ITEMS_KEY = 'items';
 
@@ -109,6 +110,13 @@ const PostReaderPage = () => {
     }
 
     const handleCompute = () => {
+        const codes = questions.map(name => stations?.find(x =>
+            x.th.replaceAll(' ', '').replace('ฯ', '').toLowerCase() === name.replaceAll(' ', '').toLowerCase()
+            || x.en?.replaceAll(' ', '').toLowerCase() === name.replaceAll(' ', '').toLowerCase()
+            || x.synonym?.replaceAll(' ', '').toLowerCase() === name.replaceAll(' ', '').toLowerCase()
+        )?.code || "");
+        console.log(codes.join('\n'))
+
         const modifiedPost = post
             .replace('LPN', 'Lumpini')
             .replace('Chatujak', 'Chatuchak')//typo
