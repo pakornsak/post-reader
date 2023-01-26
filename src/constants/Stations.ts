@@ -5,7 +5,7 @@ export interface StationInfo {
   synonym?: string
 }
 
-export const stations: StationInfo[] = [
+export const Stations: StationInfo[] = [
   //BTS Silom Line
   { code: "W1", th: "BTS สนามกีฬาแห่งชาติ", en: "BTS National Stadium" },
   { code: "S01", th: "BTS ราชดำริ", en: "BTS Ratchadamri" },

@@ -30,14 +30,15 @@ import {
 import { exec } from '../helpers/RegExHelper';
 import { RoomInfo } from '../models/RoomInfo';
 import { boxStyle } from './PostReaderPage.styled';
-import { stations } from '../constants/Stations';
+import { Stations } from '../constants/Stations';
 
 const ITEMS_KEY = 'items';
 
 const toStringLine = (room: RoomInfo): string => {
     const record = [
         "",//Zone
-        room.station,//BTS บางหว้า
+        room.stationCode,//BTS บางหว้า
+        room.stationName,
         "",//600m
         room.price,//9,000
         room.roomType,//1 BR
@@ -138,9 +139,16 @@ const PostReaderPage = () => {
         const condo = CondoList.find((condo) => findCondoName(condo, modifiedPost));
         const name = condo?.en || "";
 
+        const stationName = exec(BTS_MRT_REGEX, post)[0].replace('สถานี', '');
+        const stationCode = Stations.find(s =>
+            s.th.replaceAll(' ', '').replace('ฯ', '').toLowerCase() === stationName.replaceAll(' ', '')
+            || s.en?.replaceAll(' ', '').toLowerCase() === stationName.replaceAll(' ', '')
+            || s.synonym?.replaceAll(' ', '').toLowerCase() === stationName.replaceAll(' ', '')
+        )?.code || "";
+
+
         // Info
         const sellPrice = exec(SELL_PRICE_REGEX, post)[1] || exec(SELL_PRICE1_REGEX, post)[1] || exec(SELL_PRICE2_REGEX, post)[1];
-        const station = exec(BTS_MRT_REGEX, post)[0];
         const price = exec(PRICE2_REGEX, post)[3] || exec(PRICE_REGEX, post.replaceAll('/', ''))[1];
         const floor = exec(FLOOR_REGEX, post)[3] || exec(FLOOR_ENG_REGEX, post)[1];
         const roomType = exec(ROOM_TYPE_REGEX, post)[1] || exec(BED_ROOM_REGEX, post)[1] + " BR";
@@ -166,7 +174,8 @@ const PostReaderPage = () => {
             floor: floor,
             roomType: roomType,
             roomSize: roomSize,
-            station: station,
+            stationName: stationName,
+            stationCode: stationCode,
             owner: owner,
             telName: telName,
             tel: tel,
@@ -220,7 +229,7 @@ const PostReaderPage = () => {
                         </TableRow>
                         <TableRow>
                             <TableCell>BTS/MRT</TableCell>
-                            <TableCell colSpan={3}>{room.station}</TableCell>
+                            <TableCell colSpan={3}>{room.stationName} ({room.stationCode})</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>{room.price ? 'Rent price' : 'Sell Price'}</TableCell>
