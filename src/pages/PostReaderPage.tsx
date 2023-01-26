@@ -30,7 +30,7 @@ import {
 import { exec } from '../helpers/RegExHelper';
 import { RoomInfo } from '../models/RoomInfo';
 import { boxStyle } from './PostReaderPage.styled';
-import { Stations } from '../constants/Stations';
+import { StationInfo, Stations } from '../constants/Stations';
 
 const ITEMS_KEY = 'items';
 
@@ -109,6 +109,13 @@ const PostReaderPage = () => {
         )
     }
 
+    const findStationName = (station: StationInfo, originalName: string) => {
+        const name = originalName.replaceAll(' ', '').toLowerCase();
+        return name === station.th.replaceAll(' ', '').replace('ฯ', '').toLowerCase()
+            || name === station.en?.replaceAll(' ', '').toLowerCase()
+            || name === station.synonym?.replaceAll(' ', '').toLowerCase();
+    }
+
     const handleCompute = () => {
         const modifiedPost = post
             .replace('LPN', 'Lumpini')
@@ -132,13 +139,7 @@ const PostReaderPage = () => {
         const name = condo?.en || "";
 
         const stationName = exec(BTS_MRT_REGEX, post)[0].replace('สถานี', '');
-        const stationCode = Stations.find(s => {
-            const name = stationName.replaceAll(' ', '').toLowerCase();
-            return name === s.th.replaceAll(' ', '').replace('ฯ', '').toLowerCase()
-                || name === s.en?.replaceAll(' ', '').toLowerCase()
-                || name === s.synonym?.replaceAll(' ', '').toLowerCase()
-        })?.code || "";
-
+        const stationCode = Stations.find(s => findStationName(s, stationName))?.code || "";
 
         // Info
         const sellPrice = exec(SELL_PRICE_REGEX, post)[1] || exec(SELL_PRICE1_REGEX, post)[1] || exec(SELL_PRICE2_REGEX, post)[1];

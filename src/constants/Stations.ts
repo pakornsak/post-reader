@@ -42,7 +42,7 @@ export const Stations: StationInfo[] = [
   { code: "N7", th: "BTS สะพานควาย", en: "BTS Saphan Khwai" },
   { code: "N5", th: "BTS อารีย์", en: "BTS Ari" },
   { code: "N4", th: "BTS สนามเป้า", en: "BTS Sanam Pao" },
-  { code: "N3", th: "BTS อนุสาวรีย์ชัยสมรภูมิ", en: "BTS Victory Monument" },
+  { code: "N3", th: "BTS อนุสาวรีย์ชัยสมรภูมิ", en: "BTS Victory Monument", synonym: "Bts อนุสาวรีย์ชัย" },
   { code: "N2", th: "BTS พญาไท", en: "BTS Phaya Thai" },
   { code: "N1", th: "BTS ราชเทวี", en: "BTS Ratchathewi" },
   { code: "CEN", th: "BTS สยาม", en: "BTS Siam" },
