@@ -10,6 +10,236 @@ regex:     \n(.+) \((.+)\).+
 replace:   \n{ en: "$1", th: "$2" },
 */
 const CondoList: Property[] = [
+  { en: "Bella Costa", th: "เบลล่า คอสต้า" }, //pf
+  { en: "I CONDO Sukhapiban 2", th: "ไอ คอนโด สุขาภิบาล 2" }, //pf
+  { en: "I CONDO Sukhumvit 103", th: "ไอ คอนโด สุขุมวิท 103" }, //pf
+  { en: "Icondo Sukhumvit 105", th: "ไอคอนโด สุขุมวิท 105" }, //pf
+  { en: "Lat Phrao Village", th: "ลาดพร้าว วิลเลจ" }, //pf
+  { en: "Maneerin Lake & Park Ratchaphruek-Tiwanon", th: "มณีรินทร์ เลค พาร์ค ราชพฤกษ์ – ติวานนท์" }, //pf
+  { en: "Metro Luxe Kaset", th: "เมโทร ลักซ์ เกษตร" }, //pf
+  { en: "Metro Luxe Phaholyothin-Sutthisan", th: "เมโทร ลักซ์ พหลโยธิน-สุทธิสาร" }, //pf
+  { en: "Metro Luxe Rama 4", th: "เมโทรลักซ์ พระราม 4" }, //pf
+  { en: "Metro Luxe Ratchada", th: "เมโทรลักซ์ รัชดา" }, //pf
+  { en: "Metro Luxe Rose Gold Phaholyothin - Sutthisan", th: "เมโทรลักซ์ โรสโกลด์ พหลโยธิน - สุทธิสาร" }, //pf
+  { en: "Metro Park Sathorn Phase 1", th: "เมโทร ปาร์ค สาทร เฟส 1" }, //pf
+  { en: "Metro Sky Prachachuen", th: "เมโทร สกาย ประชาชื่น" }, //pf
+  { en: "Metro Sky Ratchada", th: "เมโทร สกาย รัชดา" }, //pf
+  { en: "Metro Sky Vouge Charan 13", th: "เมโทร สกาย โวค จรัญฯ 13" }, //pf
+  { en: "Modi Villa Bangna", th: "โมดิ วิลล่า บางนา" }, //pf
+  { en: "Perfect Masterpiece Century Rattanathibet", th: "เพอรเฟค มาสเตอร์พีซ เซนจูรี่ รัตนาธิเบศร์" }, //pf
+  { en: "Perfect Masterpiece Ekamai-Ramintra", th: "เพอร์เฟค มาสเตอร์พีช เอกมัย-รามอินทรา" }, //pf
+  { en: "Perfect Masterpiece Rama 9", th: "เพอร์เฟค มาสเตอร์พีซ พระราม 9" }, //pf
+  { en: "Perfect Masterpiece Ramkhamhaeng", th: " เพอร์เฟค มาสเตอร์พีซ รามคำแหง" }, //pf
+  { en: "Perfect Park Rangsit 2", th: "เพอร์เฟค พาร์ค รังสิต 2" }, //pf
+  { en: "Perfect Park Ratchaphruek", th: "เพอร์เฟค พาร์ค ราชพฤกษ์" }, //pf
+  { en: "Perfect Place Chiangmai", th: "เพอร์เฟค เพลส เมืองเชียงใหม่" }, //pf
+  { en: "Perfect Place Rama 5-Ratchaphruek", th: "เพอร์เฟค เพลส พระราม 5-ราชพฤกษ์" }, //pf
+  { en: "Perfect Place Ramkhamhaeng 164", th: "เพอร์เฟค เพลส รามคำแหง 164" }, //pf
+  { en: "Perfect Place Ratchaphruek", th: "เพอร์เฟค เพลส ราชพฤกษ์" }, //pf
+  { en: "Perfect Place Sukhumvit 77 - Suvarnabhumi", th: "เพอร์เฟค เพลส สุขุมวิท77-สุวรรณภูมิ" }, //pf
+  { en: "Plus City Park Rama 9-Hua Mark", th: "พลัส ซิตี้ พาร์ค พระราม 9-หัวหมาก" }, //pf
+  { en: "The Lake Kallaprapruk - Wutthakat", th: "เดอะ เลค กัลปพฤกษ์ - วุฒากาศ" }, //pf
+  { en: "The Metro Rama 9", th: "เดอะ เมทโทร พระราม 9" }, //pf
+  { en: "The Metro Rattanathibet", th: "เดอะ เมทโทร รัตนาธิเบศร์" }, //pf
+  { en: "The Sky Sukhumvit", th: "เดอะ สกาย สุขุมวิท" }, //pf
+  { en: "Yuruay Condo Nawamin 135", th: "อยู่รวย คอนโด นวมินทร์ 135" }, //pf
+  { en: "iCondo Green Space Sukhumvit 77 Phase 2", th: "ไอ คอนโด กรีน สเปซ สุขุมวิท 77 เฟส 2" }, //pf
+  { en: "iCondo Greenspace Phatthanakan-Srinakarin", th: "ไอ คอนโด กรีนสเปซ พัฒนาการ-ศรีนครินทร์" }, //pf
+  { en: "iCondo Salaya 2 The Campus", th: "ไอคอนโด ศาลายา2 เดอะแคมปัส" }, //pf
+  { en: "iCondo Serithai Green Space", th: "ไอคอนโด เสรีไทย กรีน สเปซ" }, //pf
+
+  { en: "Altitude Symphony Charoenkrung", th: "อัลติจูด ซิมโฟนี เจริญกรุง" }, //altitude
+  { en: "Altitude Unicorn Sathorn - Tha Phra", th: "อัลติจูด ยูนิคอร์น สาทร-ท่าพระ" }, //altitude
+  { en: "Altitude Mastery Sukhumvit", th: "อัลติจูด มาสเตอรี่ สุขุมวิท" }, //altitude
+  { en: "Altitude Kraf Bangna", th: "อัลติจูด คราฟ บางนา" }, //altitude
+  { en: "Altitude Define", th: "อัลติจูด ดีไฟน์" }, //altitude
+  { en: "Altitude Prove - Rama 9", th: "อัลติจูด พรูฟ พระราม 9" }, //altitude
+  { en: "Altitude Prove Kaset-Nawamin", th: "อัลติจูด พรูพ เกษตร-นวมินทร์" }, //altitude
+
+  { en: "Estara Haven Pattanakarn 20", th: "เอสทารา ฮาเว่น พัฒนาการ 20" },
+  { en: "Nara 9 by Eastern Star", th: "นารา ไนน์ บาย อีสเทอร์น สตาร์" },
+  { en: "Quintara Arte Sukhumvit 52", th: "ควินทารา อาเท่ สุขุมวิท 52" },
+  { en: "Quintara Phume Sukhumvit 39", th: "ควินทารา ภูม สุขุมวิท 39" },
+  { en: "Quintara Treehaus Sukhumvit 42", th: "ควินทารา ทรีเฮาส์ สุขุมวิท 42" },
+  { en: "Star View", th: "สตาร์ วิว" },
+  { en: "The Star Estate at Narathiwas", th: "เดอะ สตาร์ เอสเตท แอท นราธิวาสราชนครินทร์" },
+  { en: "The Star Estate at Rama 3", th: "เดอะ สตาร์ เอสเตท แอท พระราม 3" },
+  { en: "Vantage Ratchavipa", th: "แวนเทจ รัชวิภา" },
+
+  { en: "Baan Chaan Talay", th: "บ้านชานทะเล" },
+  { en: "Baan Thew Talay Aquamarine", th: "บ้านทิวทะเล อความารีน" },
+  { en: "Baan Thew Talay Blue Sapphire", th: "บ้านทิวทะเล บลู แซฟไฟร์" },
+  { en: "Blu Cha Am - Hua Hin", th: "บลู ชะอำ - หัวหิน" },
+  { en: "ISSI Condo Suksawat", th: "อิซซี่ คอนโด สุขสวัสดิ์" },
+  { en: "Issara At 42 Sukhumvit", th: "อิสสระ แอท 42 สุขุมวิท" },
+  { en: "Issara Collection Sathorn", th: "อิสระ คอลเลคชั่น สาทร" },
+  { en: "Issara Residence Rama 9", th: "อิสสระ เรสซิเดนซ์ พระราม9" },
+  { en: "The Issara Chiang Mai", th: "ดิ อิสสระ เชียงใหม่" },
+  { en: "The Issara Ladprao", th: "ดิ อิสสระ ลาดพร้าว" },
+
+  { en: "49 Plus", th: "49 พลัส" },
+  { en: "Condo One Ladprao 18", th: "คอนโด วัน ลาดพร้าว 18" },
+  { en: "Condo One Sukhumvit 52", th: "คอนโด วัน สุขุมวิท 52" },
+  { en: "Condo One X Sukhumvit 26", th: "คอนโด วัน เอ็กซ์ สุขุมวิท 26" },
+  { en: "Dusit D2 Residences", th: "ดุสิต ดีทู เรสซิเดนเซส" },
+  { en: "My Condo Sukhumvit 81", th: "มาย คอนโด สุขุมวิท 81" },
+  { en: "Plus City Park Ekamai - Ramindra", th: "พลัส ซิตี้พาร์ค เอกมัย-รามอินทรา" },
+  { en: "Plus City Park Sukhumvit 101/1", th: "พลัส ซิตี้พาร์ค สุขุมวิท 101/1" },
+  { en: "Sathorn Plus - By The Garden", th: "สาทร พลัส - บาย เดอะ การ์เด้น" },
+  { en: "Sathorn Plus On The Pond", th: "สาทร พลัส ออน เดอะ พอนด์" },
+  { en: "The 49 Plus 2", th: "เดอะ โฟร์ตี้ไนน์ พลัส 2" },
+
+  { en: "Athenee Residence", th: "แอทธินี เรสซิเด้นซ์" },
+  { en: "Circle Condominium", th: "เซอร์เคิล คอนโดมิเนียม" },
+  { en: "Circle Living Prototype", th: "เซอร์เคิล ลิฟวิ่ง โปรโตไทพ์" },
+  { en: "Circle Rein Sukhumvit 12", th: "เซอร์เคิล ไรน์ สุขุมวิท 12" },
+  { en: "Circle Sukhumvit 11", th: "เซอร์เคิล สุขุมวิท 11" },
+  { en: "Circle Sukhumvit 12", th: "เซอเคิล สุขุมวิท 12" },
+  { en: "Circle Sukhumvit 31", th: "เซอร์เคิล สุขุมวิท 31" },
+  { en: "Fragrant 71", th: "เฟรเกรนท์ 71" },
+  { en: "Sky Villas Sathorn", th: "สกาย วิลล่าส์ สาทร" },
+  { en: "The Empire Place", th: "ดิ เอ็มไพร์ เพลซ" },
+  { en: "The Emporio Place", th: "ดิ เอ็มโพริโอ เพลส" },
+  { en: "The Pano Rama3", th: "เดอะ พาโน พระราม3" },
+  { en: "The Prime 11", th: "เดอะ ไพร์ม 11" },
+  { en: "Villa Asoke", th: "วิลล่า อโศก" },
+  { en: "Villa Rachatewi", th: "วิลล่า ราชเทวี" },
+  { en: "Villa Sathorn", th: "วิลล่า สาทร" },
+
+  { en: "Bridge Sathorn-Narathiwas" },
+  { en: "City Sense Bangna KM.10" },
+  { en: "Prinn Sathorn-Rajapruek" },
+  { en: "Prinyada Light Rama 5" },
+  { en: "Smart Condo at Rama 2", th: "สมาร์ท คอนโด พระราม2" },
+  { en: "The Complete Narathiwat", th: "เดอะ คอมพลีท นราธิวาส" },
+  { en: "The Complete Rajprarop", th: "เดอะ คอมพลีท ราชปรารภ" },
+  { en: "Zelle Rattanathibet", th: "เซล รัตนาธิเบศร์" },
+  { en: "Zelle+ Talat Phlu Station", th: "เซล พลัส ตลาดพลู สเตชั่น บี" },
+  { en: "Zerene Petchkasem", th: "ซีรีน เพชรเกษม" },
+
+  { en: "My Condo Sukhumvit 52", th: "มายคอนโด สุขุมวิท 52" },
+  { en: "Tree Condo Ekamai", th: "ทรี คอนโด เอกมัย" },
+  { en: "Tree Condo LUXE Sukhumvit 52", th: "ทรี คอนโด ลักซ์ สุขุมวิท 52" },
+  { en: "Tree Condo Ladprao 27", th: "ทรี คอนโด ลาดพร้าว 27" },
+  { en: "Tree Condo Prasarnmit" },
+  { en: "Tree Condo Sukhumvit 42", th: "ทรี คอนโด สุขุมวิท 42" },
+  { en: "Tree Condo Sukhumvit 50", th: "ทรี คอนโด สุขุมวิท 50" },
+  { en: "Tree Condo Sukhumvit 52", th: "ทรี คอนโด สุขุมวิท 52" },
+
+  { en: "AQ Alix Residence Soonvijai", th: "เอคิว เอลิคซ์ เรซิเดนซ์ ศูนย์วิจัย" },
+  { en: "AQ Arbor Suanluang Rama 9 – Pattanakarn", th: "เอคิว อาร์เบอร์ สวนหลวง ร.9-พัฒนากาi" },
+  { en: "Aequa Sukhumvit 49", th: "เอควา สุขมวิท 49" },
+  { en: "Garden Asoke - Rama 9", th: "การ์เดน อโศก-พระราม 9" },
+  { en: "Krisda Grand Park", th: "กฤษดา แกรนด์ พาร์ค" },
+  { en: "The Kris Extra 4", th: "เดอะคริส เอ็กซ์ตร้า 4" },
+  { en: "The Kris Ratchada 17", th: "เดอะ คริส รัชดา 17" },
+
+  { en: "Belle Park Residence", th: "เบลพาร์ค คอนโดมิเนียม" },
+  { en: "Supreme Garden", th: "สุพรีม การ์เด้น" },
+  { en: "Supreme Legend", th: "สุพรีม เลเจ้นด์" },
+  { en: "Supreme Ville", th: "สุพรีม วิลล์" },
+  { en: "The Parco Condominium", th: "เดอะ พาร์โก" },
+
+  { en: "H Sukhumvit 43", th: "เอช สุขุมวิท 43" },
+  { en: "IKON Sukhumvit 77", th: "ไอคอน สุขุมวิท 77" },
+  { en: "IKON Udomsuk", th: "ไอคอน อุดมสุข" },
+  { en: "Vtara Sukhumvit 36", th: "วีธารา สุขุมวิท 36" },
+
+  { en: "The Unique Ekamai-Ramintra", th: "ดิ ยูนีค เอกมัย-รามอินทรา" },
+  { en: "The Unique Ladprao 26", th: "ดิ ยูนีค ลาดพร้าว 26" },
+  { en: "The Unique Sukhumvit 62/1", th: "ดิ ยูนีค สุขุมวิท 62/1" },
+  { en: "The Unique at Koomuang", th: "ดิ ยูนิค คอนโด แอท คูเมือง" },
+  { en: "Totnes Kaset - Nawamin", th: "โททเนส เกษตร-นวมินทร์" },
+
+  { en: "Movenpick Residences Ekkamai", th: "เมอเวนพิค เรสซิเดนซ์ เอกมัย" },
+  { en: "Nusasiri Grand", th: "ณุศาศิริ แกรนด์" },
+  { en: "Nusasiri Rama 9-Wongwaen", th: "ณุศาศิริ พระราม 9-วงแหวน" },
+  { en: "Parc Exo Condominium", th: "พาร์ค เอ็กซ์โซ คอนโดมิเนียม" },
+
+  { en: "Vertiq", th: "เวอร์ทิค" },
+  { en: "Wish @ Samyan", th: "วิช แอท สามย่าน" },
+  { en: "Wish @ Siam", th: "วิช แอท สยาม" },
+  { en: "Wish Signature II Midtown Siam", th: "วิช ซิกเนเจอร์ 2 มิดทาวน์ สยาม" },
+  { en: "Wish Signature Midtown Siam", th: "วิช ซิกเนเจอร์ มิดทาวน์ สยาม" },
+
+  { en: "Avenue 61", th: "อเวนิว 61" },
+  { en: "Sivana Gardens Pool Villas", th: "ศิวาน่า การ์เดน พูล วิลลา" },
+  { en: "Sivana HideAway 2", th: "ศิวาน่า ไฮอะเวย์ 2" },
+  { en: "The Plantation", th: "เดอะ แพลนเทชั่น" },
+
+  { en: "Hyde Heritage Thonglor", th: "ไฮด์ เฮอริเทจ ทองหล่อ" },
+  { en: "Hyde Sukhumvit 11", th: "ไฮด์ สุขุมวิท 11" },
+  { en: "Hyde Sukhumvit 13", th: "ไฮด์ สุขุมวิท 13" },
+  { en: "The Trendy Condominium", th: "เดอะ เทรนดี้ คอนโดมิเนียม" },
+
+  { en: "The Link Vano Sukhumvit 64", th: "เดอะ ลิงค์ วาโน สุขุมวิท 64" },
+  { en: "The Link Sukhumvit 64", th: "เดอะ ลิ้งค์ สุขุมวิท 64" },
+  { en: "The Link Sukhumvit 50", th: "เดอะ ลิงค์ สุขุมวิท 50" },
+
+  { en: "The Bloom Sukhumvit 71", th: "เดอะ บลูม สุขุมวิท 71" },
+  { en: "@ City Condominium", th: "แอท ซิตี้ คอนโดมิเนียม" },
+  { en: "@ City Sukhumvit 101", th: "แอท ซิตี้ สุขุมวิท 101" },
+
+  { en: "Chatrium Residence Sathon", th: "ชาเทรียม เรซิเดนซ์ สาทร" },
+  { en: "Emporium Suites by Chatrium", th: "เอ็มโพเรียม สวีท บาย ชาเทรียม" },
+  { en: "Chatrium Residence Riverside", th: "ชาเทรียม ริเวอร์ไซด์ เรสซิเดน" },
+
+  { en: "Le Raffine Sukhumvit 39", th: "เลอ รัฟฟิเน่ สุขุมวิท 39" },
+  { en: "Le Raffine Jambunuda Sukhumvit 31", th: "เลอรัฟฟิเน่ ชมพูนุช สุขุมวิท 31" },
+  { en: "Le Raffine Sukhumvit 24", th: "เลอ รัฟฟิเน่ สุขุมวิท24" },
+
+  { en: "Haus 23 Ratchada-Ladprao", th: "เฮ้าส์ 23 รัชดา-ลาดพร้าว" },
+  { en: "Click Denim", th: "คลิ๊กเดนิม" },
+  { en: "DLV Thonglor 20", th: "ดีแอลวี ทองหล่อ20" },
+
+  { en: "Chewa Heart Sukhumvit 36", th: "ชีวา ฮาร์ท สุขุมวิท 36" }, //chewathai
+  { en: "Chewa Heart Sukhumvit 62/1", th: "ชีวา ฮาร์ท สุขุมวิท 62/1" }, //chewathai
+  { en: "Chewathai Hallmark Charan 13", th: "ชีวาทัย ฮอลล์มาร์ค จรัญ 13" }, //chewathai
+  { en: "Chewathai Hallmark Ladprao-Chokchai 4", th: "ชีวาทัย ฮอลล์มาร์ค ลาดพร้าว - โชคชัย 4" }, //chewathai
+  { en: "Chewathai Interchange", th: "ชีวาทัย อินเตอร์เชนจ์" }, //chewathai
+  { en: "Chewathai Kaset - Nawamin", th: "ชีวาทัย เกษตร - นวมินทร์" }, //chewathai
+  { en: "Chewathai Phetkasem 27", th: "ชีวาทัย เพชรเกษม 27" }, //chewathai
+  { en: "Chewathai Pinklao" }, //chewathai
+  { en: "Chewathai Ramkamhaeng", th: "ชีวาทัย รามคำแหง" }, //chewathai
+  { en: "Chewathai Ratchaprarop", th: "ชีวาทัย ราชปรารภ" }, //chewathai
+  { en: "Chewathai Residence Asoke", th: "ชีวาทัย เรสซิเดนซ์ อโศก" }, //chewathai
+  { en: "Chewathai Residence Bang Pho", th: "ชีวาทัย เรสซิเดนซ์ บางโพ" }, //chewathai
+  { en: "Chewathai Residence Thonglor" }, //chewathai
+  { en: "Hallmark Changwattana", th: "ฮอลล์มาร์ค แจ้งวัฒนะ" }, //chewathai
+  { en: "Hallmark Ngamwongwan" }, //chewathai
+  { en: "The Surawong", th: "เดอะ สุรวงศ์" }, //chewathai
+
+  { en: "Magnolias Ratchadamri Boulevard", th: "แมกโนเลียส์ ราชดำริ บูเลอวาร์ด" }, //mqdc
+  { en: "Magnolias Waterfront Residences", th: "แมกโนเลียส์ วอเตอร์ฟรอนท์ เรสซิเดนซ์" }, //mqdc
+  { en: "The Muse Sukhumvit 64/2", th: "เดอะ มิวส์ สุขุมวิท 64/1" }, //mqdc
+  { en: "The Residences Mandarin Oriental Bangkok", th: "เดอะ เรสซิเดนซ์ แมนดาริน โอเรียนเต็ล กรุงเทพฯ" }, //mqdc
+  { en: "Whizdom 101" },
+  { en: "Whizdom Avenue Ratchada - Ladprao", th: "วิซดอม อเวนิว รัชดา - ลาดพร้าว" }, //mqdc
+  { en: "Whizdom Connect Sukhumvit", th: "วิสซ์ดอม คอนเนค สุขุมวิท" }, //mqdc
+  { en: "Whizdom Essence", th: "วิสซ์ดอม เอสเซ้นส์" }, //mqdc
+  { en: "Whizdom Inspire Sukhumvit", th: "วิสซ์ดอม อินสปาย สุขุมวิท" }, //mqdc
+  { en: "Whizdom Punnawithi Station", th: "วิสซ์ดอม ปุณณวิถี สเตชั่น" }, //mqdc
+  { en: "Whizdom Station Ratchada-Thapra", th: "วิสซ์ดอม สเตชั่น รัชดา-ท่าพระ" }, //mqdc
+  { en: "Whizdom The Exclusive", th: "วิสซ์ดอม ดิ เอ็กซ์คลูซีฟ" }, //mqdc
+
+  { en: "185 Rajadamri", th: "185 ราชดำริ" }, //raimon
+  { en: "Northpoint", th: "นอร์ทพอยท์" }, //raimon
+  { en: "Northshore Pattaya", th: "นอร์ทชอร์ พัทยา" }, //raimon
+  { en: "One City Centre", th: "วัน ซิตี้ เซนเตอร์" }, //raimon
+  { en: "Tait 12", th: "เทตต์ ทเวลฟ์" }, //raimon
+  { en: "The Diplomat 39", th: "เดอะ ดิโพลแมท 39" }, //raimon
+  { en: "The Estelle Phrom Phong", th: "ดิ เอสเทลล์ พร้อมพงษ์" }, //raimon
+  { en: "The Heights Kata", th: "เดอะ ไฮท์ กะตะ" }, //raimon
+  { en: "The Lakes", th: "เดอะ เลค" }, //raimon
+  { en: "The Legend Saladaeng", th: "เดอะ ลีเจ้นด์ ศาลาแดง" }, //raimon
+  { en: "The Lofts Asoke", th: "เดอะ ลอฟท์ อโศก" }, //raimon
+  { en: "The Lofts Ekkamai", th: "เดอะ ลอฟท์ เอกมัย" }, //raimon
+  { en: "The Lofts Silom", th: "เดอะ ลอฟท์ สีลม" }, //raimon
+  { en: "The Lofts Yennakart", th: "เดอะ ล็อฟท์ เย็นอากาศ" }, //raimon
+  { en: "The River by Raimon Land", th: "เดอะ ริเวอร์ บาย ไรม่อน แลนด์" }, //raimon
+  { en: "Unixx South Pattaya", th: "ยูนิกซ์ เซาท์ พัทยา" }, //raimon
+  { en: "Zire Wongamat", th: "ซายร์ วงศ์อมาตย์" }, //raimon
+
   { en: "39 by Sansiri", th: "39 บาย แสนสิริ" }, //Sansiri
   { en: "98 Wireless", th: "ไนน์ตี้เอท ไวร์เลส" }, //Sansiri
   { en: "Anasiri Krungthep-Pathumthani", th: "อณาสิริ กรุงเทพ-ปทุมธานี" }, //Sansiri
@@ -113,7 +343,7 @@ const CondoList: Property[] = [
   { en: "Taka Haus", th: "ทากะ เฮาส์" }, //Sansiri
   { en: "The BASE Garden Rama 9", th: "เดอะ เบส การ์เด้น พระราม 9" }, //Sansiri
   { en: "The Base Central Pattaya", th: "เดอะ เบส เซ็นทรัล พัทยา" }, //Sansiri
-  { en: "The Base Chaengwattana", th: " เดอะ เบส แจ้งวัฒนะ " }, //Sansiri
+  { en: "The Base Chaengwattana", th: " เดอะ เบส แจ้งวัฒนะ" }, //Sansiri
   { en: "The Base Downtown", th: "เดอะ เบส ดาวน์ทาวน์" }, //Sansiri
   { en: "The Base Height", th: "เดอะ เบส ไฮท์" }, //Sansiri
   { en: "The Base Park East Sukhumvit 77", th: "เดอะ เบส พาร์ค อีส สุขุมวิท 77" }, //Sansiri
@@ -180,7 +410,7 @@ const CondoList: Property[] = [
   { en: "The Esse Sukhumvit 36", th: "ดิ เอส สุขุมวิท 36" }, //Singha Estate
   { en: "The Esse at Singha Complex", th: "ดิ เอส แอท สิงห์ คอมเพล็กซ์" }, //Singha Estate
   { en: "The Esse Asoke", th: "ดิ เอส อโศก" }, //Singha Estate
-  { en: "SINGHA COMPLEX", th: "สิงห์ คอมเพล็กซ์ " }, //Singha Estate
+  { en: "SINGHA COMPLEX", th: "สิงห์ คอมเพล็กซ์" }, //Singha Estate
 
   { en: "Landmark @Grand Station", th: "แลนด์มาร์ค แอท แกรนด์ สเตชั่น" }, //Siamese Asset
   { en: "Siamese Exclusive Ratchada", th: "ไซมิส เอ๊กซ์คลูซีพ รัชดา" }, //Siamese Asset
@@ -213,7 +443,7 @@ const CondoList: Property[] = [
   { en: "Chapter One Midtown Ladprao 24", th: "แชปเตอร์ วัน มิดทาวน์ ลาดพร้าว 24" }, //pruksa
   { en: "Chapter One Ratburana 33", th: "แชปเตอร์ วัน ราษฎร์บูรณะ 33" }, //pruksa
   { en: "Chapter One The Campus Kaset", th: "แชปเตอร์ วัน เดอะ แคมปัส เกษตร" }, //pruksa
-  { en: "Chapter One Shine Bangpo", th: "แชปเตอร์ วัน ชายน์ บางโพ " }, //pruksa
+  { en: "Chapter One Shine Bangpo", th: "แชปเตอร์ วัน ชายน์ บางโพ" }, //pruksa
   { en: "Chapter Thonglor 25", th: "แชปเตอร์ ทองหล่อ 25" }, //pruksa
   { en: "Condolette Dwell Sukhumvit 26", th: "คอนโดเลต ดเวล สุขุมวิท 26" }, //pruksa
   { en: "Condolette Light Convent", th: "คอนโดเลต ไลท์ คอนแวนต์" }, //pruksa
@@ -442,7 +672,7 @@ const CondoList: Property[] = [
   { en: "SCOPE Promsri", th: "สโคป พร้อมศรี" }, //sc
   { en: "Saladaeng One", th: "ศาลาแดง วัน" }, //sc
   { en: "The Crest Park Residences", th: "เดอะ เครสท์ พาร์ค เรสซิเดนซ์" }, //sc
-  { en: "The Crest Ruamrudee", th: "เดอะ เครส ร่วมฤดี " }, //sc
+  { en: "The Crest Ruamrudee", th: "เดอะ เครส ร่วมฤดี" }, //sc
   { en: "The Crest Santora", th: "เดอะ เครสท์ ซานโตรา" }, //sc
   { en: "The Crest Sukhumvit 24", th: "เดอะ เครสท์ สุขุมวิท 34" }, //sc
   { en: "The Crest Sukhumvit 34", th: "เดอะ เครสท์ สุขุมวิท 34" }, //sc
@@ -467,7 +697,7 @@ const CondoList: Property[] = [
   { en: "Chateau In Town Sukhumvit 62/1", th: "ชาโตว์ อินทาวน์ สุขุมวิท 62/1" }, //cmc
   { en: "Chateau In Town Sukhumvit 64/1" }, //cmc
   { en: "Chateau In Town Vibhavadi 10", th: "ชาโตว์ อินทาวน์ วิภาวดี 10" }, //cmc
-  { en: "Cybiq Ratchada 32", th: "ไซบิค รัชดา 32 " }, //cmc
+  { en: "Cybiq Ratchada 32", th: "ไซบิค รัชดา 32" }, //cmc
   { en: "Kasa Eureka Rama 2 - Buddhabucha", th: "คาซ่า ยูเรก้า พระราม 2 - พุทธบูชา" }, //cmc
   { en: "The Clev Riverline Chaophraya - Wong Sawang", th: "เดอะ เคลฟ ริเวอร์ไลน์ เจ้าพระยา - วงศ์สว่าง" }, //cmc
   { en: "The Cuvee Tiwanon", th: "เดอะ คิวเว่ ติวานนท์" }, //cmc
@@ -504,13 +734,35 @@ const CondoList: Property[] = [
   { en: "Lyss Ratchayothin", th: "ลิสส์ รัชโยธิน" }, //able
   { en: "The Remarkable Soonvijai 2", th: "เดอะ รีมาร์คเอเบิ้ล ศูนย์วิจัย 2" }, //able
 
+  { en: "Amanta Lumpini", th: "อมันตา ลุมพินี" }, //narai
+  { en: "Amanta Ratchada", th: "อมันตา รัชดา" }, //narai
+  { en: "Flora Marigold", th: "ฟลอรา แมรีโกลด์" }, //narai
+  { en: "Flora Wongsawang" }, //narai
+  { en: "Nara Home", th: "นาราโฮม" }, //narai
+  { en: "Parc Priva", th: "พาร์ค พรีว่า" }, //narai
+  { en: "The Parkland Bangna", th: "เดอะ พาร์คแลนด์ บางนา" }, //narai
+  { en: "The Parkland Charan - Pinklao", th: "เดอะ พาร์คแลนด์ จรัญฯ-ปิ่นเกล้า" }, //narai
+  { en: "The Parkland Grand Asoke-Phetchaburi", th: "เดอะ พาร์คแลนด์ แกรนด์ อโศก-เพชรบุรี" }, //narai
+  { en: "The Parkland Grand Taksin", th: "เดอะ พาร์คแลนด์ แกรนด์ ตากสิน" }, //narai
+  { en: "The Parkland Lite" }, //narai
+  { en: "The Parkland Ngamwongwan-Khaerai", th: " เดอะ พาร์คแลนด์ งามวงศ์วาน-แคราย" }, //narai
+  { en: "The Parkland Phetkasem - Thapra", th: "เดอะ พาร์คแลนด์ เพชรเกษม – ท่าพระ" }, //narai
+  { en: "The Parkland Phetkasem 56", th: "เดอะพาร์คแลนด์ เพชรเกษม 56" }, //narai
+  { en: "The Parkland Phetkasem", th: "เดอะ พาร์คแลนด์ เพชรเกษม" }, //narai
+  { en: "The Parkland Ratchada - Wongsawang", th: "เดอะพาร์คแลนด์ รัชดา - วงศ์สว่าง" }, //narai
+  { en: "The Parkland Ratchada-Thapra", th: "เดอะ พาร์คแลนด์ รัชดา-ท่าพระ" }, //narai
+  { en: "The Parkland Srinakarin Lakeside", th: "เดอะ พาร์คแลนด์ ศรีนครินทร์ เลคไซด์" }, //narai
+  { en: "The Parkland Srinakarin", th: " เดอะ พาร์คแลนด์ ศรีนครินทร์" }, //narai
+  { en: "The Parkland Taksin-Thapra", th: "เดอะ พาร์คแลนด์ ตากสิน-ท่าพระ" }, //narai
+  { en: "Veva Priva", th: "วีว่า พรีว่า" }, //narai
+
   { en: "Ashton Asoke", th: "แอชตัน อโศก" }, //ananda
   { en: "Ashton Asoke-Rama 9", th: "แอชตัน อโศก-พระราม 9" }, //ananda
   { en: "Ashton Chula-Silom", th: "แอชตัน จุฬา-สีลม" }, //ananda
   { en: "Ashton Morph 38", th: "แอชตัน มอร์ฟ 38" }, //ananda
   { en: "Ashton Residence 41", th: "แอชตัน เรสซิเดนซ์ 41" }, //ananda
   { en: "Ashton Silom", th: "แอชตัน สีลม" }, //ananda
-  { en: "Aspire Asoke-Ratchada", th: "แอสปาย อโศก-รัชดา " }, //ap
+  { en: "Aspire Asoke-Ratchada", th: "แอสปาย อโศก-รัชดา" }, //ap
   { en: "Aspire Erawan Prime", th: "แอสปาย เอราวัณ ไพร์ม" }, //ap
   { en: "Aspire Erawan", th: "แอสปาย เอราวัณ" }, //ap
   { en: "Aspire Ngamwongwan", th: "แอสปาย งามวงศ์วาน" }, //ap
@@ -530,11 +782,10 @@ const CondoList: Property[] = [
   { en: "Atoll Maldives Beach", th: "เอโทล มัลดีฟ บีช" }, //ananda
   { en: "Atoll Maldives Palms", th: "เอโทล มัลดีฟส์ ปาล์ม บางนา-วงแหวน" }, //ananda
   { en: "Atoll Similan Reef On Nut-Romklao", th: "เอโทล สิมิลัน รีฟ อ่อนนุช-ร่มเกล้า" }, //ananda
-  { en: "Avenue 61 Condo" },
   { en: "BEAT BANGWA INTERCHANGE" },
   { en: "Baanpuripuri Satriwittaya 2" },
   { en: "Brompton Pet Friendly Sukhumvit 107" },
-  { en: "C Ekkamai " },
+  { en: "C Ekkamai" },
   { en: "COMPLETE ราชปารถ" },
   { en: "Casa Asoke Dindeang Condo" },
   { en: "Casa City Ekkamai-Ramintra" },
@@ -543,11 +794,10 @@ const CondoList: Property[] = [
   { en: "Casa Condo @ MRT สามแยกบางใหญ่" },
   { en: "Chalermnit Art De Maison" },
   { en: "Chalong Harbour Estate", th: "ฉลอง ฮาร์เบอร์ เอสเตท" }, //ananda
-  { en: "Chewathai Kaset-Nawamin" },
-  { en: "Chewathai Phetkasem 27" },
   { en: "Ciela Charan 13 Station" },
   { en: "Citi Smart Condominium", th: "ซิตี้ สมาร์ท คอนโดมิเนียม" }, //ap
   { en: "City Home Ratchada-Pinklao", th: "ซิตี้ โฮม รัชดา-ปิ่นเกล้า" },
+  { en: "City Home Rattanathibet", th: "ซิตี้ โฮม รัตนาธิเบศร์" },
   { en: "City Home Tha-Phra Intersection", th: "ซิตี้ โฮม สี่แยกท่าพระ" },
   { en: "Condolette Pixel Sathorn" },
   { en: "Cozy Satreewittaya 2 Soi 10" },
@@ -565,17 +815,14 @@ const CondoList: Property[] = [
   { en: "Garden Place Ratchada 20" },
   { en: "Golden Pearl Bangkok, Sukhumvit 101/1" },
   { en: "Golden Town Ladprao-Kaset Nawamin" },
-  { en: "Grand Bangkok Boulevard Sathorn-Kallapaphruk" },
   { en: "Grand Palace" },
   { en: "Grand Park Town" },
   { en: "Grand Park View Asoke" },
   { en: "Green Ville สุขุมวิท 101" },
   { en: "H2 Condo รามอินทรา 21" },
-  { en: "Hasu Haus (Soi Onnut 1/1)" },
-  { en: "Hasu Haus" },
   { en: "Hyde Sukhumvit 13" },
   { en: "I-house Laguna Garden" },
-  { en: "IBIZA Condo RCA " },
+  { en: "IBIZA Condo RCA" },
   { en: "Ideo New Rama 9", th: "ไอดีโอ พระราม 9" }, //ananda
   { en: "Ikon 77" },
   { en: "Icondo Green Space" },
@@ -583,7 +830,7 @@ const CondoList: Property[] = [
   { en: "Ideo Charan 70-Riverview", th: "ไอดีโอ จรัญฯ 70-ริเวอร์วิว" }, //ananda
   { en: "Ideo Ladprao 17", th: "ไอดีโอ ลาดพร้าว 17" }, //ananda
   { en: "Ideo Ladprao 5", th: "ไอดีโอ ลาดพร้าว 5" }, //ananda
-  { en: "Ideo Mix Sukhumvit 103", th: "ไอดีโอ มิกซ์ สุขุมวิท 103" }, //ananda
+  { en: "Ideo Mix Sukhumvit 103", th: "ไอดีโอ มิกซ์", synonym: "Ideo Mix" }, //ananda
   { en: "Ideo Mobi Asoke", th: "ไอดีโอ โมบิ อโศก" }, //ananda
   { en: "Ideo Mobi Bangsue Grand Interchange", th: "ไอดีโอ โมบิ บางซื่อ แกรนด์ อินเตอร์เชนจ์" }, //ananda
   { en: "Ideo Mobi Phayathai", th: "ไอดีโอ โมบิ พญาไท" }, //ananda
@@ -708,7 +955,7 @@ const CondoList: Property[] = [
   { en: "Lumpini Ville On Nut-Latkrabang", th: "ลุมพินี วิลล์ อ่อนนุช-ลาดกระบัง" }, //lpn
   { en: "Lumpini Ville On Nut-Phatthanakan", th: "ลุมพินี วิลล์ อ่อนนุช-พัฒนาการ" }, //lpn
   { en: "Lumpini Ville Onnut 46", th: "ลุมพินี วิลล์ อ่อนนุช 46" }, //lpn
-  { en: "Lumpini Ville Pattanakarn-Srinakarin", th: "ลุมพินี วิลล์ พัฒนาการ-ศรีนครินทร์ " }, //lpn
+  { en: "Lumpini Ville Pattanakarn-Srinakarin", th: "ลุมพินี วิลล์ พัฒนาการ-ศรีนครินทร์" }, //lpn
   { en: "Lumpini Ville Phatthanakan-New Phetchaburi", th: "ลุมพินี วิลล์ พัฒนาการ-เพชรบุรีตัดใหม่" }, //lpn
   { en: "Lumpini Ville Phibulsongkhram Riverview" }, //lpn
   { en: "Lumpini Ville Phra Nang Klao-Riverview", th: "ลุมพินี วิลล์ พระ นั่ง เกล้า-ริเวอร์วิว" }, //lpn
@@ -744,7 +991,7 @@ const CondoList: Property[] = [
   { en: "Noble Cube", th: "โนเบิล คิวบ์" }, //noble
   { en: "Noble GEO Watcharapol", th: "โนเบิล จีโอ วัชรพล" }, //noble
   { en: "Noble Gable Kanso Watcharapol", th: "โนเบิล เกเบิล คันโซ วัชรพล" }, //noble
-  { en: "Noble Nue Cross Khu Knot", th: "โนเบิล นิว ครอส คูคต " }, //noble
+  { en: "Noble Nue Cross Khu Knot", th: "โนเบิล นิว ครอส คูคต" }, //noble
   { en: "Noble Ora", th: "โนเบิล ออร่า" }, //noble
   { en: "Noble Ploenchit", th: "โนเบิล เพลินจิต" }, //noble
   { en: "Noble ReD", th: "โนเบิล รีดี" }, //noble
@@ -753,7 +1000,7 @@ const CondoList: Property[] = [
   { en: "Noble Reflex", th: "โนเบิล รีเฟลกซ์" }, //noble
   { en: "Noble Reform", th: "โนเบิล รีฟอร์ม" }, //noble
   { en: "Noble Remix", th: "โนเบิล รีมิกซ์" }, //noble
-  { en: "Noble Residence", th: "โนเบิล เรสซิเดนซ์ " }, //noble
+  { en: "Noble Residence", th: "โนเบิล เรสซิเดนซ์" }, //noble
   { en: "Noble Reveal", th: "โนเบิล รีวีล" }, //noble
   { en: "Noble Revent", th: "โนเบิล รีเวนต์" }, //noble
   { en: "Noble Revo Silom", th: "โนเบิล รีโว สีลม" }, //noble
@@ -763,7 +1010,7 @@ const CondoList: Property[] = [
   { en: "Noble State 39", th: "โนเบิล สเตท 39" }, //noble
   { en: "Noble Tara Pattanakarn", th: "โนเบิล ทารา พัฒนาการ" }, //noble
   { en: "Noble Wana Watcharapol", th: "โนเบิล วานา วัชรพล" }, //noble
-  { en: "Notting Hill Jatujak Interchange พหลโยธิน 18 " },
+  { en: "Notting Hill Jatujak Interchange พหลโยธิน 18" },
   { en: "Notting Hill สุขุมวิท-แพรกษา" },
   { en: "Nue Noble Centre Bang Na", th: "นิว โนเบิล เซ็นเตอร์ บางนา" }, //noble
   { en: "Nue Noble Ngamwongwan", th: "นิว โนเบิล งามวงศ์วาน" }, //noble
@@ -790,7 +1037,7 @@ const CondoList: Property[] = [
   { en: "Quintara Phume สุขุมวิท 39" },
   { en: "Quintara สุขุมวิท 39" },
   { en: "REACH Phahonyothin 52", th: "รีช พหลโยธิน 52" },
-  { en: "RYE Huamak", th: "ไรย์ หัวหมาก" },
+  { en: "Rye Huamak", th: "ไรย์ หัวหมาก" }, //regent
   { en: "Ratchada City 18" },
   { en: "Regent Home 12 Latphrao 41", th: "รีเจ้นท์ โฮม 12 ลาดพร้าว 41" }, //regent
   { en: "Regent Home 18", th: "รีเจ้นท์ โฮม 18" }, //regent
@@ -798,7 +1045,7 @@ const CondoList: Property[] = [
   { en: "Regent Home 5 Ratchada 19", th: "รีเจ้นท์ โฮม รัชดา 19" }, //regent
   { en: "Regent Home 9 Sukhumvit 64", th: "รีเจ้นท์ โฮม 9 สุขุมวิท 64" }, //regent
   { en: "Regent Home Bangson 27", th: "รีเจ้นท์โฮม บางซ่อน" }, //regent
-  { en: "Regent Home Bangson 28", th: "รีเจ้นท์ โฮม บางซ่อน 28 " }, //regent
+  { en: "Regent Home Bangson 28", th: "รีเจ้นท์ โฮม บางซ่อน 28" }, //regent
   { en: "Regent Home Sukhumvit 81", th: "รีเจ้นท์ โฮม สุขุมวิท 81" }, //regent
   { en: "Regent Home Sukhumvit 97/1", th: "รีเจ้นท์ โฮม สุขุมวิท 97/1" }, //regent
   { en: "Regent Orchid Sukhumvit 101", th: "รีเจ้นท์ ออคิด สุขุมวิท 101" }, //regent
@@ -806,7 +1053,7 @@ const CondoList: Property[] = [
   { en: "Rhythm Asoke 2", th: "ริทึ่ม อโศก 2" }, //ap
   { en: "Rhythm Asoke", th: "ริทึ่ม อโศก" }, //ap
   { en: "Rhythm Ekkamai Estate", th: "ริธึ่ม เอกมัย เอสเตท" }, //ap
-  { en: "Rhythm Ekkamai", th: "ริทึ่ม เอกมัย " }, //ap
+  { en: "Rhythm Ekkamai", th: "ริทึ่ม เอกมัย" }, //ap
   { en: "Rhythm Phahol-Ari", th: "ริทึ่ม พหล-อารีย์" }, //ap
   { en: "Rhythm Rangnam", th: "ริทึ่ม รางน้ำ" }, //ap
   { en: "Rhythm Ratchada", th: "ริธึม รัชดา" }, //ap
@@ -817,15 +1064,13 @@ const CondoList: Property[] = [
   { en: "Rhythm Sukhumvit 42", th: "ริทึ่ม สุขุมวิท 42" }, //ap
   { en: "Rhythm Sukhumvit 44/1", th: "ริธึ่ม สุขุมวิท 44/1" }, //ap
   { en: "Rhythm Sukhumvit 50", th: "ริทึ่ม สุขุมวิท 50" }, //ap
-  { en: "Rise Rama 9 " },
+  { en: "Rise Rama 9" },
   { en: "Runesu ทองหล่อ 5" },
-  { en: "Rye Sukhumvit 101/1", th: "ไรย์ สุขุมวิท 101/1" },
-  { en: "Rye Talat Phlu", th: "ไรย์ ตลาดพลู" },
-  { en: "Rye Taldadphu" },
+  { en: "Rye Sukhumvit 101/1", th: "ไรย์ สุขุมวิท 101/1" }, //regent
+  { en: "Rye Talat Phlu", th: "ไรย์ ตลาดพลู" }, //regent
   { en: "S&S Sukhumvit Condo" },
   { en: "SENA Kith MRT-Bangkae" },
   { en: "Sathorn House" },
-  { en: "Sense Of London" },
   { en: "Sky Walk Condominium" },
   { en: "Skyline รัตนาธิเบศร์" },
   { en: "Soul Ekamai Ladprao", th: "โซล เอกมัย-ลาดพร้าว" }, //ap
@@ -898,7 +1143,7 @@ const CondoList: Property[] = [
   { en: "Supalai Veranda Ramkhamhaeng", th: "ศุภาลัย เวอเรนด้า รามคําแหง" },
   { en: "Supalai Veranda Rattanathibet", th: "ศุภาลัย เวอเรนด้า รัตนาธิเบศร์" },
   { en: "Supalai Veranda Sukhumvit 117", th: "ศุภาลัย เวอเรนด้า สุขุมวิท 117" },
-  { en: "Supalai Ville Bangkok-Pathumthani", th: "ศุภาลัย วิลล์ กรุงเทพฯ-ปทุมธานี " },
+  { en: "Supalai Ville Bangkok-Pathumthani", th: "ศุภาลัย วิลล์ กรุงเทพฯ-ปทุมธานี" },
   { en: "Supalai Ville Chiang Mai", th: "ศุภาลัย วิลล์ เชียงใหม่" },
   { en: "Supalai Ville Chonburi", th: "ศุภาลัย วิลล์ ชลบุรี" },
   { en: "Supalai Ville Chotana-Ruamchok", th: "ศุภาลัย วิลล์ โชตนา-รวมโชค" },
@@ -928,7 +1173,7 @@ const CondoList: Property[] = [
   { en: "The Clover ทองหล่อ ซอย18" },
   { en: "The Coast Bangkok" },
   { en: "The Cube Plus Chaengwattana" },
-  { en: "The Diplomat Sathorn " },
+  { en: "The Diplomat Sathorn" },
   { en: "The Emerald Residence รัชดา" },
   { en: "The Excel Groove LaSalle", th: "ดิ เอ็กซ์เซล กรูฟ ลาซาล 52" },
   { en: "The Excel Hideaway Sukhumvit 71", th: "The Excel Hideaway สุขุมวิท 71" },
@@ -942,14 +1187,10 @@ const CondoList: Property[] = [
   { en: "The Niche ID Phetkasem-Bangkae" },
   { en: "The Niche ID ลาดพร้าววังหิน" },
   { en: "The Niche Pride Thonglor-Phetchaburi" },
-  { en: "The Parkland รัชดา-ท่าพระ" },
-  { en: "The Parkland Grand" },
-  { en: "The Parkland Phetkasem ", th: "พาร์คแลนด์ เพชรเกษม" },
-  { en: "The Parkland Phetkasem 56", th: "พาร์คแลนด์ เพชรเกษม 56" },
   { en: "The Plant Citi Ladphrao 71" },
   { en: "The President Petchkasem-Bangkhae", th: "" },
-  { en: "The President Sathorn-Ratchaphruek 2", th: "เดอะ เพรสซิเดนท์ สาทร-ราชพฤกษ์ 2" },
-  { en: "The President Sathorn-Ratchaphruek 3", th: "เดอะ เพรสซิเดนท์ สาทร-ราชพฤกษ์ 3" },
+  { en: "The President Sathorn-Ratchaphruek 2", th: "เดอะ เพรสซิเดนท์ สาทร-ราชพฤกษ์ 2", synonym: "The President สาทร-ราชพฤกษ์ เฟส 2" },
+  { en: "The President Sathorn-Ratchaphruek 3", th: "เดอะ เพรสซิเดนท์ สาทร-ราชพฤกษ์ 3", synonym: "The President สาทร-ราชพฤกษ์ เฟส 3" },
   { en: "The President Sathorn-Ratchaphruek", th: "เดอะ เพรสซิเดนท์ สาทร-ราชพฤกษ์" },
   { en: "The President Sukhumvit 81", th: "เดอะ เพรสซิเดนท์ สุขุมวิท 81" },
   { en: "The Revo Ladprao 48" },
@@ -977,45 +1218,39 @@ const CondoList: Property[] = [
   { en: "VILLA RACHATEWI BTS  Phayathai" },
   { en: "Venio Sukhumvit 10", th: "เวนิโอ สุขุมวิท 10" }, //ananda
   { en: "Via Botani (Sukhumvit 47)" },
-  { en: "Villa Asoke" },
   { en: "Villa Bajaj" },
   { en: "Vino รัชดา 32" },
   { en: "Vittorio 39", th: "วิตโตริโอ 39" }, //ap
   { en: "Walden Asoke" },
-  { en: "Whizdom @ Punnawithi Station" },
-  { en: "Whizdom Station Ratchada-Thapra " },
-  { en: "Wittayu Complex", th: "วิทยุคอมเพล็กซ์" },
-  { en: "แมคนิค รามอินทรา 21" },
-  { en: "Wish @ Siam" },
-  { en: "Altitude Unicorn สาทร ท่าพระ" },
-  { en: "Metro Luxe Ratchada", th: "เมโทรลักษณ์ รัชดา" },
 
-  { en: "Condo One Sukhumvit 52", th: "คอนโด วัน สุขุมวิท 52" },
-  { en: "Condo One Ladprao 18" },
-  { en: "Condo One X Sukhumvit 26" },
+  { en: "Wittayu Complex", th: "วิทยุคอมเพล็กซ์" },
+  { en: "MAGNIX Ramintra 21", th: "แมคนิค รามอินทรา 21" },
+  { en: "Metro Luxe Ratchada", th: "เมโทรลักษณ์ รัชดา" },
+  { en: "Bodin Suite Home", th: "บดินทร์ สวีท โฮม" },
+  { en: "Be You Chokchai 4", th: "บียู โชคชัย4" },
+  { en: "Phayathai Place", th: "พญาไทเพลส" },
+  { en: "Rich Park @ Chaophraya", th: "ริชพาร์ค แอท เจ้าพระยา" },
+  { en: "Watermark Chaophraya River", th: "วอเตอร์มาร์ค เจ้าพระยา ริเวอร์" },
+  { en: "ศรีสวัสดิ์คอนโดมิเนียม" },
+  { en: "Aree Place Phahonyothin", th: "อารีย์ เพลส พหลโยธิน" },
+  { en: "Elements Srinakarin", th: "อิลีเม้นท์ ศรีนครินทร์" },
+  { en: "Chalermnit Art De Maison", th: "เฉลิมนิจ อาจ เดอ เมซอง" },
+  { en: "The Kith Plus Sukhumvit 113", th: "เดอะ คิทท์ พลัส สุขุมวิท 113" },
+  { en: "The Connect Pattanakarn 44", th: "เดอะคอนเนคพัฒนาการ 44" },
+  { en: "Metro Park Sathorn", th: "เมโทร ปาร์ค สาทร" },
+  { en: "Metro Sky Bangsue - Prachachuen", th: "เมโทร สกาย บางซื่อ-ประชาชื่น" },
+  { en: "iCondo Phetkasem 39", th: "ไอคอนโด เพชรเกษม 39" },
 
   { en: "38 Mansion Sukhumvit 38" },
   { en: "ATMOZ LADPRAO 15" },
   { en: "Artisan Ratchada" },
-
-  // { en: "บดินทร์ สวีท โฮม" },
-  // { en: "บียู โชคชัย4" },
-  // { en: "พญาไทเพลส" },
-  // { en: "รัชดาภิเษก 19" },
-  // { en: "ริชพาร์ค@เจ้าพระยา" },
-  // { en: "วอเตอร์มาร์ค เจ้าพระยา ริเวอร์" },
-  // { en: "ศรีสวัสดิ์คอนโดมิเนียม" },
-  // { en: "สมาร์ท คอนโด พระราม 2" },
-  // { en: "อารีย์ เพลส พหลโยธิน" },
-  // { en: "อิลีเม้นท์ ศรีนครินทร์" },
-  // { en: "ฮาสุ เฮาส์ สุขุมวิท 77" },
-  // { en: "เฉลิมนิจ อาจ เดอ เมซอง" },
-  // { en: "เดอะ คิทท์ พลัส สุขุมวิท 113" },
-  // { en: "เดอะคอนเนคพัฒนาการ 44" },
-  // { en: "เมโทร ปาร์ค สาทร" },
-  // { en: "เมโทร ปาร์ค สาทร-กัลปพฤกษ์" },
-  // { en: "เมโทร สกาย บางซื่อ-ประชาชื่น" },
-  // { en: "ไอคอนโด เพชรเกษม39" },
+  { en: "Metris Pattanakarn Ekkamai" },
+  { en: "Majestic Tower" },
+  { en: "Sathorn Gallery Residence" },
+  { en: "Brix condo" },
+  { en: "Tropicana ECO Green Condo", th: "ทรอปิคาน่า" },
+  { en: "Groove Ratchada-Rama 9" },
+  { en: "คิวเฮ้าส์สาทร" },
 ]
 
 export default CondoList

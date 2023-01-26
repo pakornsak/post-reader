@@ -91,8 +91,9 @@ const PostReaderPage = () => {
         const enPost = post
             .replace('หลังสวน', 'langsuan')
             .replace('สุขุมวิท', 'sukhumvit')
-            .replace('เพชรเกษม', 'Phetkasem')
+            .replace('เพชรเกษม', 'phetkasem')
             .replace('เอสเปซ', 'aspace')
+            .replace('ลาดพร้าว', 'ladprao')
             .replaceAll(' ', '');
         const thPost = post
             .replace('ideo', 'ไอดีโอ')
@@ -100,7 +101,10 @@ const PostReaderPage = () => {
         return (
             enPost.includes(condo.en.toLowerCase().replaceAll(' ', '').replace('-', '')) ||
             (condo.th &&
-                thPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', '')))
+                thPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', ''))) ||
+            (condo.synonym &&
+                enPost.includes(condo.synonym?.toLowerCase().replaceAll(' ', '').replace('-', '')))
+
         )
     }
 
@@ -114,6 +118,7 @@ const PostReaderPage = () => {
             .replace('รีสอร์ต', 'รีสอร์ท')
             .replace('เซนทริค', 'เซ็นทริค')
             .replace('Huaikwang', 'Huaikhwang')//typo
+            .replace('Petchpaksem', 'Phetkasem')//typo
             .replace('Knightbridge', 'KnightsBridge')
             .replace('Asoak', 'Asoke')//typo
             .replace('Parkland Condo รัชดา ท่าพระ', 'THE PARKLAND รัชดา-ท่าพระ')
