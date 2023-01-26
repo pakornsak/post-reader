@@ -37,8 +37,8 @@ const ITEMS_KEY = 'items';
 const toStringLine = (room: RoomInfo): string => {
     const record = [
         "",//Zone
-        room.station.code,//BTS บางหว้า
-        room.station.name,
+        room.station?.code || "",//S12
+        room.station?.name || "",//BTS บางหว้า
         "",//600m
         room.price,//9,000
         room.roomType,//1 BR
@@ -106,18 +106,10 @@ const PostReaderPage = () => {
                 thPost.includes(condo.th?.toLowerCase().replaceAll(' ', '').replace('-', ''))) ||
             (condo.synonym &&
                 enPost.includes(condo.synonym?.toLowerCase().replaceAll(' ', '').replace('-', '')))
-
         )
     }
 
     const handleCompute = () => {
-        // const codes = questions.map(name => stations?.find(x =>
-        //     x.th.replaceAll(' ', '').replace('ฯ', '').toLowerCase() === name.replaceAll(' ', '').replace('-', '').toLowerCase()
-        //     || x.en?.replaceAll(' ', '').toLowerCase() === name.replaceAll(' ', '').replace('-', '').toLowerCase()
-        //     || x.synonym?.replaceAll(' ', '').toLowerCase() === name.replaceAll(' ', '').replace('-', '').toLowerCase()
-        // )?.code || "");
-        // console.log(codes.join('\n'))
-
         const modifiedPost = post
             .replace('LPN', 'Lumpini')
             .replace('Chatujak', 'Chatuchak')//typo
@@ -140,11 +132,12 @@ const PostReaderPage = () => {
         const name = condo?.en || "";
 
         const stationName = exec(BTS_MRT_REGEX, post)[0].replace('สถานี', '');
-        const stationCode = Stations.find(s =>
-            s.th.replaceAll(' ', '').replace('ฯ', '').toLowerCase() === stationName.replaceAll(' ', '')
-            || s.en?.replaceAll(' ', '').toLowerCase() === stationName.replaceAll(' ', '')
-            || s.synonym?.replaceAll(' ', '').toLowerCase() === stationName.replaceAll(' ', '')
-        )?.code || "";
+        const stationCode = Stations.find(s => {
+            const name = stationName.replaceAll(' ', '').toLowerCase();
+            return name === s.th.replaceAll(' ', '').replace('ฯ', '').toLowerCase()
+                || name === s.en?.replaceAll(' ', '').toLowerCase()
+                || name === s.synonym?.replaceAll(' ', '').toLowerCase()
+        })?.code || "";
 
 
         // Info
@@ -231,7 +224,7 @@ const PostReaderPage = () => {
                         </TableRow>
                         <TableRow>
                             <TableCell>BTS/MRT</TableCell>
-                            <TableCell colSpan={3}>{room.station.name} ({room.station.code})</TableCell>
+                            <TableCell colSpan={3}>{room.station?.name} ({room.station?.code})</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>{room.price ? 'Rent price' : 'Sell Price'}</TableCell>
