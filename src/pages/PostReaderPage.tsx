@@ -37,8 +37,8 @@ const ITEMS_KEY = 'items';
 const toStringLine = (room: RoomInfo): string => {
     const record = [
         "",//Zone
-        room.stationCode,//BTS บางหว้า
-        room.stationName,
+        room.station.code,//BTS บางหว้า
+        room.station.name,
         "",//600m
         room.price,//9,000
         room.roomType,//1 BR
@@ -174,8 +174,10 @@ const PostReaderPage = () => {
             floor: floor,
             roomType: roomType,
             roomSize: roomSize,
-            stationName: stationName,
-            stationCode: stationCode,
+            station: {
+                name: stationName,
+                code: stationCode,
+            },
             owner: owner,
             telName: telName,
             tel: tel,
@@ -229,7 +231,7 @@ const PostReaderPage = () => {
                         </TableRow>
                         <TableRow>
                             <TableCell>BTS/MRT</TableCell>
-                            <TableCell colSpan={3}>{room.stationName} ({room.stationCode})</TableCell>
+                            <TableCell colSpan={3}>{room.station.name} ({room.station.code})</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>{room.price ? 'Rent price' : 'Sell Price'}</TableCell>

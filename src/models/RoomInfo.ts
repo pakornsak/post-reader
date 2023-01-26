@@ -2,8 +2,10 @@ export interface RoomInfo {
   name: string
   price: string
   sellPrice: string
-  stationCode: string
-  stationName: string
+  station: {
+    code: string
+    name: string
+  }
   floor: string
   roomType: string
   roomSize: string
